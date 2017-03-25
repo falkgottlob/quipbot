@@ -138,7 +138,7 @@ client.on('connect', function(connection) {
             console.log("Received: '" + message.utf8Data + "'");
         var mess = JSON.parse(message.utf8Data);
         if(mess.type == 'message'){
-        if(mess.message.text.startsWith("/SFDC ")){
+        if(mess.message.text.startsWith("/SFDC")){
           console.log('bot'); 
           var thread = mess.thread.id;
           var annotation = '';
@@ -239,15 +239,14 @@ function(err, rets) {
 }
 
 function queryrespond(thread, annotation, message){
-var sobject = message.split(' ', 1)[0].substring(1);
-var limit = message.split(' ', 2)[1] || 10;
-var fields = message.split(' ', 3)[2] || null; 
+// /SFDC case 10
+var sfdc = message.split(' ', 1)[0];
+var sobject = message.split(' ', 2)[1];
+var limit = message.split(' ', 3)[2] || 10;
+var fields = message.split(' ', 4)[3] || null; 
+
 
 if(fields == null){
-
-console.log(sobject);
-console.log(limit);
-console.log(fields);
 
 //myArray = myString.split(',');
   switch (sobject) {
