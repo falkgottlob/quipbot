@@ -152,7 +152,7 @@ client.on('connect', function(connection) {
           //console.log(threads);
           //});
           
-          if(mess.message.text.startsWith('/SFDC update ')){
+          if(mess.message.text.startsWith('/SFDC update')){
           
           uploadtable(thread, annotation, mess.message.text);
           
@@ -244,6 +244,10 @@ var limit = message.split(' ', 2)[1] || 10;
 var fields = message.split(' ', 3)[2] || null; 
 
 if(fields == null){
+
+console.log(sobject);
+console.log(limit);
+console.log(fields);
 
 //myArray = myString.split(',');
   switch (sobject) {
