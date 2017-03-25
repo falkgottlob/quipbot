@@ -138,7 +138,7 @@ client.on('connect', function(connection) {
             console.log("Received: '" + message.utf8Data + "'");
         var mess = JSON.parse(message.utf8Data);
         if(mess.type == 'message'){
-        if(mess.message.text.startsWith("#")){
+        if(mess.message.text.startsWith("/SFDC ")){
           console.log('bot'); 
           var thread = mess.thread.id;
           var annotation = '';
@@ -152,7 +152,7 @@ client.on('connect', function(connection) {
           //console.log(threads);
           //});
           
-          if(mess.message.text.startsWith('#upload')){
+          if(mess.message.text.startsWith('/SFDC update ')){
           
           uploadtable(thread, annotation, mess.message.text);
           
