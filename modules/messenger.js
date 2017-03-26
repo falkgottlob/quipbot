@@ -47,17 +47,17 @@ function parseMessage(message) {
     let events = JSON.parse(message.utf8Data);
     console.log("QUIP parsing Type: " + events.type); 
     
-    if(events.type == 'message'){
+    if(events.type == 'message' && events.message.text.startsWith("#")){
         console.log("QUIP parsing Text: " + events.message.text); 
 
-            let thread = events.thread.id;
-            let annotation = '';
-            if(events.message.annotation){
-              annotation = events.message.annotation.id;
-            }
-            var records = [];
+        let thread = events.thread.id;
+        let annotation = '';
+        if(events.message.annotation){
+          annotation = events.message.annotation.id;
+        }
+        var records = [];
 
-            sendMessage(thread, 'error', annotation, null);
+        //sendMessage(thread, 'error', annotation, null);
 
         //let events = req.body.entry[0].messaging;
         for (let i = 0; i < events.length; i++) {
@@ -65,9 +65,8 @@ function parseMessage(message) {
             let sender = event.sender.id;
 
 
-            if (process.env.MAINTENANCE_MODE && ((event.message && event.message.text) || event.postback)) {
-                //sendMessage({text: `Sorry I'm taking a break right now.`}, sender);
-
+            if (process.env.MAINTENANCE_MODE == 'true') {
+                sendMessage(thread, `Sorry I'm taking a break right now.`, annotation, null);
 
             } else if (event.message && event.message.text) {
 
@@ -93,9 +92,24 @@ function parseMessage(message) {
                 }
             } else if (event.message && event.message.attachments) {
                 uploads.processUpload(sender, event.message.attachments);
+            } else {
+
+
+                let result = processor.match(events.message.text);
+                console.log("Handler " + result.handlerName );
+                if (result) {
+                    let handler = handlers[result.handler];
+                    if (handler && typeof handler === "function") {
+                        handler(sender, result.match);
+                    } else {
+                        console.log("Handler " + result.handlerName + " is not defined");
+                    }
+                }
+
             }
         }
         //res.sendStatus(200);
+          
     }
 
 }
