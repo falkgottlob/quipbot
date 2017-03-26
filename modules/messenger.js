@@ -18,7 +18,9 @@ var url;
 // direct way 
 rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, response) {
     console.log('QUIP Connect: ' + data);
+    
     url = data;
+    
     client.on('connectFailed', function(error) {
         console.log('QUIP Connect Error: ' + error.toString());
     });
@@ -40,13 +42,14 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
         });
     sendNumber();
          //quip expects origin to be set. 
-    client.connect(url.url, null, 'https://quip.com' , null , null);
+   
     });
+    client.connect(url.url, null, 'https://quip.com' , null , null);
 
 });
 
 function parseMessage(message) {
-            if (connection.connected) {
+            
                 var mess = JSON.parse(message.utf8Data);
                 if(mess.type == 'message'){
 
@@ -94,7 +97,7 @@ function parseMessage(message) {
 
 
                 } 
-            }
+           
             
         }
         function sendNumber() {
