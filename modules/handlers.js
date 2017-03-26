@@ -56,9 +56,9 @@ exports.priceChanges = (thread, values) => {
 };
 
 exports.hi = (thread) => {
-    messenger.addSection(thread).then(response => {
+
         messenger.addSection({text: `Hello, ${response.first_name}!`}, thread);
-    });
+   
 };
 
 exports.help = (thread) => {
