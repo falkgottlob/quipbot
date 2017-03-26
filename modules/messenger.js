@@ -37,11 +37,10 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
         connection.on('message', function(message) {
             if (message.type === 'utf8') {
                 // && message.type == 'message'
-                console.log("Received: '" + message.utf8Data + "'");
-                //var req = JSON.parse(message.utf8Data);
-   console.log("data: '" + data + "'");
-   console.log("response: '" + response + "'");
-                parseMessage(data, response);
+               
+                console.log("MESSAGE TYPE: '" + message.type + "'");
+                console.log("MESSAGE JSON: '" + JSON.parse(message.utf8Data) + "'");
+                parseMessage(message);
             }
         });
    
@@ -50,14 +49,13 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
 
 });
 
-function parseMessage(req, res) {
-    console.log("QUIP parsing " + req.type);   
+function parseMessage(message) {
+    console.log("QUIP parsing " + message.type);   
     
 
+var events = JSON.parse(message.utf8Data);
 
-
-
-    let events = req.body.entry[0].messaging;
+    //let events = req.body.entry[0].messaging;
     for (let i = 0; i < events.length; i++) {
         let event = events[i];
         let sender = event.sender.id;
