@@ -64,6 +64,8 @@ function parseMessage(message) {
                 if (result) {
                     console.log("Handler " + result.handlerName );
                     let handler = handlers[result.handler];
+                    console.log("QUIP handler Type: " + handler; 
+                    
                     if (handler && typeof handler === "function") {
                         handler(sender, result.match);
                     } else {
@@ -76,12 +78,15 @@ function parseMessage(message) {
 
 }
 
+
 function sendMessage(thread, message, responseto, parts){
 
    //parts need very specific generation, too much effort so took it out
     var newmessages = { threadId : thread , content : message, annotation_id : responseto};
    
     qclient.newMessage(newmessages, callbackMessage);
+
+    //respond(thread, 'error', annotation, null);
 }
 function callbackMessage(error, message){
 //  console.log('message sent ' + error + message);
