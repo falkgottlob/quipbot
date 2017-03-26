@@ -81,6 +81,8 @@ function parseMessage(message) {
 
 const compiledFunction = pug.compileFile('./views/index.pug');
 
+ addsection(thread, compiledFunction({  records: result, rtype: sobject}));
+
 let sendMessage = (message, thread, responseto, parts) => {
 
    //parts need very specific generation, too much effort so took it out
@@ -96,7 +98,7 @@ let sendMessage = (message, thread, responseto, parts) => {
 }
 
 let addSection = (message, thread) => {
-console.log("Message " + message);
+
     var newsection = {
         threadId : thread,
         content : message

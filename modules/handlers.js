@@ -5,6 +5,12 @@ let salesforce = require('./salesforce'),
     formatter = require('./formatter');
 
 
+exports.contact = (thread, values) => {
+    messenger.addSection("Contact", thread);
+    salesforce.getObject("contact").then(properties => {
+        messenger.addSection(formatter.formatProperties(properties), thread);
+    });
+};
 
 exports.searchHouse = (thread) => {
     messenger.addSection({text: `OK, looking for houses for sale around you...}`}, thread);

@@ -26,6 +26,27 @@ let login = () => {
     });
 };
 
+let getObject =  (object) => {
+    
+
+    return new Promise((resolve, reject) => {
+        let q = `SELECT id,
+                    Name 
+                FROM ListView 
+                WHERE SobjectType = '" +
+                object + "'"
+                LIMIT 5`;
+        org.query({query: q}, (err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else {
+                resolve(resp.records);
+            }
+        });
+    });
+
+};
+
 let findProperties = (params) => {
     let where = "";
     if (params) {
@@ -145,6 +166,7 @@ let createCase = (propertyId, customerName, customerId) => {
 
 login();
 
+exports.getObject = getObject;
 exports.org = org;
 exports.findProperties = findProperties;
 exports.findPropertiesByCategory = findPropertiesByCategory;
