@@ -105,7 +105,10 @@ function sendMessage(thread, message, responseto, parts){
    //parts need very specific generation, too much effort so took it out
     var newmessages = { threadId : thread , content : message, annotation_id : responseto};
    
-    qclient.newMessage(newmessages, '');
+    qclient.newMessage(newmessages, callbackMessage);
+}
+function callbackMessage(error, message){
+//  console.log('message sent ' + error + message);
 }
 
        
