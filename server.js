@@ -9,7 +9,9 @@ var express = require('express'),
     quipconnect = require('./modules/messenger'),
    
     app = express();
-
+    
+    
+const pug = require('pug');
 
 app.set('port', process.env.PORT || 5000);
 

@@ -13,6 +13,7 @@ let quip = require('./quip.js'),
         headers: { "Authorization": "Bearer " + QUIP_TOKEN  } // request headers 
     },
     url;
+const pug = require('pug');
  
 // direct way 
 rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, response) {
