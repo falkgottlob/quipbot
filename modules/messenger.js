@@ -35,7 +35,8 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
             setTimeout(startnew, 5000);
         });
         connection.on('message', function(message) {
-            if (message.type === 'utf8' && message.type == 'message') {
+            if (message.type === 'utf8') {
+                // && message.type == 'message'
                 console.log("Received: '" + message.utf8Data + "'");
                 //var req = JSON.parse(message.utf8Data);
    console.log("data: '" + data + "'");
