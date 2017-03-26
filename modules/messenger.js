@@ -102,7 +102,8 @@ let addSection = (message, thread) => {
         threadId : thread,
         content : message
     }
-    
+    console.log("QUIP newsection: " + newsection); 
+    console.log("QUIP sentedit: " + sentedit); 
     qclient.editDocument(newsection, sentedit);    
     
 }
