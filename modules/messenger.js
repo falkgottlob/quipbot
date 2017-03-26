@@ -48,8 +48,8 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
 
 function parseMessage(message) {
             
-    var mess = JSON.parse(message.utf8Data);
-    if(mess.type == 'message'){
+    var req = JSON.parse(message.utf8Data);
+    if(req.type == 'message'){
 
 
 
