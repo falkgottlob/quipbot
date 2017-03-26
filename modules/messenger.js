@@ -13,7 +13,6 @@ let quip = require('./quip.js'),
         headers: { "Authorization": "Bearer " + QUIP_TOKEN  } // request headers 
     },
     url;
-const pug = require('pug');
  
 // direct way 
 rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, response) {
@@ -79,7 +78,6 @@ function parseMessage(message) {
 
 }
 
-const compiledFunction = pug.compileFile('./views/index.pug');
 
  //addsection(thread, compiledFunction({  records: result, rtype: sobject}));
 
@@ -99,11 +97,12 @@ let sendMessage = (message, thread, responseto, parts) => {
 
 let addSection = (message, thread) => {
 
+
     var newsection = {
         threadId : thread,
         content : message
     }
-    console.log(newsection);
+    
     qclient.editDocument(newsection, sentedit);    
     
 }
