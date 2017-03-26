@@ -64,7 +64,7 @@ function parseMessage(message) {
                 if (result) {
                     console.log("Handler " + result.handlerName );
                     let handler = handlers[result.handler];
-                    console.log("QUIP handler Type: " + handler; 
+                    console.log("QUIP handler Type: " + handler); 
                     
                     if (handler && typeof handler === "function") {
                         handler(sender, result.match);
