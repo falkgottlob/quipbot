@@ -7,8 +7,8 @@ let salesforce = require('./salesforce'),
 
 exports.contact = (thread, values) => {
     messenger.addSection("Contact", thread);
-    salesforce.getObject("contact").then(properties => {
-        messenger.addSection(formatter.formatProperties(properties), thread);
+    salesforce.getObject("contact").then(table => {
+        messenger.addSection(formatter.formatTabel(table), thread);
     });
 };
 
