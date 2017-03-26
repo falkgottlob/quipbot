@@ -60,8 +60,9 @@ function parseMessage(message) {
         var records = [];
 
         let result = processor.match(events.message.text);
-                console.log("Handler " + result.handlerName );
+                
                 if (result) {
+                    console.log("Handler " + result.handlerName );
                     let handler = handlers[result.handler];
                     if (handler && typeof handler === "function") {
                         handler(sender, result.match);
