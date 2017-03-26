@@ -89,14 +89,14 @@ let sendMessage = (message, thread, responseto, parts) => {
         content : message, 
         annotation_id : responseto
     };
-    console.log("Message " + message);
+    
     qclient.newMessage(newmessages, callbackMessage);
 
     //respond(thread, 'error', annotation, null);
 }
 
 let addSection = (message, thread) => {
-
+console.log("Message " + message);
     var newsection = {
         threadId : thread,
         content : message
