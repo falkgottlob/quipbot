@@ -6,7 +6,7 @@ var express = require('express'),
     handlers = require('./modules/handlers'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
-    quipconnect = require('./modules/quipconnect'),
+    quipconnect = require('./modules/messenger'),
    
     app = express();
 
