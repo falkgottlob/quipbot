@@ -78,7 +78,7 @@ function parseMessage(message) {
 
 }
 
-exports.sendMessage(thread, message, responseto, parts){
+function sendMessage(thread, message, responseto, parts){
 
    //parts need very specific generation, too much effort so took it out
     var newmessages = { threadId : thread , content : message, annotation_id : responseto};
@@ -87,7 +87,7 @@ exports.sendMessage(thread, message, responseto, parts){
 
     //respond(thread, 'error', annotation, null);
 }
-exports.callbackMessage(error, message){
+function callbackMessage(error, message){
 //  console.log('message sent ' + error + message);
 }
 
