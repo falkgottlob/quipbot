@@ -83,7 +83,7 @@ var events = JSON.parse(message.utf8Data);
             uploads.processUpload(sender, event.message.attachments);
         }
     }
-    res.sendStatus(200);
+    //res.sendStatus(200);
 
 
 
