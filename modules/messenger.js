@@ -4,13 +4,16 @@ let quip = require('./quip.js'),
 
     QUIP_TOKEN = process.env.QUIP_TOKEN,
 
-    qclient = new quip.Client({accessToken: QUIP_TOKEN}),
-    rclient = new require('node-rest-client').Client,
-    client = new require('websocket').client;
+    qclient = new quip.Client({accessToken: QUIP_TOKEN}),;
 
+var Client = require('node-rest-client').Client;
+var rclient = new Client();
+
+var WebSocketClient = require('websocket').client;
+var client = new WebSocketClient();
 
 var args = {
-    headers: { "Authorization": "Bearer " + process.env.QUIP_TOKEN  } // request headers 
+    headers: { "Authorization": "Bearer " + QUIP_TOKEN  } // request headers 
 };
 var url;
  
