@@ -78,6 +78,8 @@ function parseMessage(message) {
 
 }
 
+const compiledFunction = pug.compileFile('./views/index.pug');
+
 let sendMessage = (message, thread, responseto, parts) => {
 
    //parts need very specific generation, too much effort so took it out
@@ -86,7 +88,7 @@ let sendMessage = (message, thread, responseto, parts) => {
         content : message, 
         annotation_id : responseto
     };
-    console.log(newmessages);
+    console.log("Message " + message);
     qclient.newMessage(newmessages, callbackMessage);
 
     //respond(thread, 'error', annotation, null);
