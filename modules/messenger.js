@@ -1,6 +1,6 @@
 "use strict";
 
-let quip = require('./modules/quip.js'),
+let quip = require('quip.js'),
 
     QUIP_TOKEN = process.env.QUIP_TOKEN,
 
