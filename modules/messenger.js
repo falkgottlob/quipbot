@@ -78,25 +78,28 @@ function parseMessage(message) {
 
 }
 
-function sendMessage(thread, message, responseto, parts){
+function sendMessage(message, thread, responseto, parts){
 
    //parts need very specific generation, too much effort so took it out
-    var newmessages = { threadId : thread , content : message, annotation_id : responseto};
-   
+    var newmessages = { 
+        threadId : thread, 
+        content : message, 
+        annotation_id : responseto
+    };
+    console.log(newmessages);
     qclient.newMessage(newmessages, callbackMessage);
 
     //respond(thread, 'error', annotation, null);
 }
 
-function addsection(thread, message){
+function addSection(message, thread){
 
-var newsection = {
+    var newsection = {
         threadId : thread,
         content : message
-
     }
     console.log(newsection);
-qclient.editDocument(newsection, sentedit);    
+    qclient.editDocument(newsection, sentedit);    
     
 }
 
