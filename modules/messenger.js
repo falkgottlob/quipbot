@@ -20,7 +20,7 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
     url = data;
     client.on('connectFailed', function(error) {
         console.log('QUIP Connect Error: ' + error.toString());
-    });
+    })
 
     client.on('connect', function(connection) {
         console.log("QUIP WebSocket client connected");
@@ -30,15 +30,21 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
         connection.on('close', function() {
             console.log("QUIP echo-protocol Connection Closed");
             setTimeout(startnew, 5000);
-        })
+        });
         connection.on('message', function(message) {
             if (message.type === 'utf8') {
                 console.log("Received: '" + message.utf8Data + "'");
                 parseMessage(message);
             }
         });
-        
-        function parseMessage(message) {
+    sendNumber();
+         //quip expects origin to be set. 
+    client.connect(url.url, null, 'https://quip.com' , null , null);
+    });
+
+});
+
+function parseMessage(message) {
             if (connection.connected) {
                 var mess = JSON.parse(message.utf8Data);
                 if(mess.type == 'message'){
@@ -97,12 +103,3 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
                 setTimeout(sendNumber, 1000);
             }
         }
-       
-
-        sendNumber();
-         //quip expects origin to be set. 
-        client.connect(url.url, null, 'https://quip.com' , null , null);
-};
-});
-
-
