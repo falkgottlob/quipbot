@@ -2,9 +2,7 @@
 
 let quip = require('./quip.js'),
 
-    QUIP_TOKEN = process.env.QUIP_TOKEN,
-
-    qclient = new quip.Client({accessToken: QUIP_TOKEN}),;
+    QUIP_TOKEN = process.env.QUIP_TOKEN;
 
 var Client = require('node-rest-client').Client;
 var rclient = new Client();
@@ -19,11 +17,11 @@ var url;
  
 // direct way 
 rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, response) {
-    // parsed response body as js object 
+    console.log('QUIP Connect: ' + data);
     url = data;
     client.on('connectFailed', function(error) {
         console.log('QUIP Connect Error: ' + error.toString());
-    })
+    });
 
     client.on('connect', function(connection) {
         console.log("QUIP WebSocket client connected");
