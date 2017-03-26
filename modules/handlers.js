@@ -10,6 +10,7 @@ exports.contact = (thread, values) => {
     salesforce.getObject("contact").then(properties => {
         messenger.addSection(formatter.formatProperties(properties), thread);
     });
+     console.log(properties);
 };
 
 exports.searchHouse = (thread) => {
