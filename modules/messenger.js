@@ -1,6 +1,7 @@
 "use strict";
 
 let quip = require('./quip.js'),
+    processor = require('./processor'),
     QUIP_TOKEN = process.env.QUIP_TOKEN,
     Client = require('node-rest-client').Client,
     rclient = new Client(),
