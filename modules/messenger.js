@@ -67,7 +67,7 @@ function parseMessage(message) {
                     console.log("QUIP handler Type: " + handler); 
                     
                     if (handler && typeof handler === "function") {
-                        handler(sender, result.match);
+                        handler(thread, result.match);
                     } else {
                         console.log("Handler " + result.handlerName + " is not defined");
                     }
@@ -78,8 +78,7 @@ function parseMessage(message) {
 
 }
 
-
-function sendMessage(thread, message, responseto, parts){
+exports.sendMessage(thread, message, responseto, parts){
 
    //parts need very specific generation, too much effort so took it out
     var newmessages = { threadId : thread , content : message, annotation_id : responseto};
@@ -88,7 +87,7 @@ function sendMessage(thread, message, responseto, parts){
 
     //respond(thread, 'error', annotation, null);
 }
-function callbackMessage(error, message){
+exports.callbackMessage(error, message){
 //  console.log('message sent ' + error + message);
 }
 
