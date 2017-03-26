@@ -37,9 +37,6 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
         connection.on('message', function(message) {
             if (message.type === 'utf8') {
                 // && message.type == 'message'
-               
-                console.log("MESSAGE TYPE: '" + message.type + "'");
-                console.log("MESSAGE JSON: '" + JSON.parse(message.utf8Data) + "'");
                 parseMessage(message);
             }
         });
@@ -50,10 +47,10 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
 });
 
 function parseMessage(message) {
-    console.log("QUIP parsing " + message.type);   
-    
-
-var events = JSON.parse(message.utf8Data);
+     
+    let events = JSON.parse(message.utf8Data);
+    console.log("QUIP parsing Type: " + events.type); 
+    console.log("QUIP parsing Text: " + events.message.text); 
 
     //let events = req.body.entry[0].messaging;
     for (let i = 0; i < events.length; i++) {
@@ -84,7 +81,6 @@ var events = JSON.parse(message.utf8Data);
         }
     }
     //res.sendStatus(200);
-
 
 
 }
