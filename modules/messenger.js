@@ -78,7 +78,7 @@ function parseMessage(message) {
 
 }
 
-function sendMessage(message, thread, responseto, parts){
+let sendMessage(message, thread, responseto, parts){
 
    //parts need very specific generation, too much effort so took it out
     var newmessages = { 
@@ -92,7 +92,7 @@ function sendMessage(message, thread, responseto, parts){
     //respond(thread, 'error', annotation, null);
 }
 
-function addSection(message, thread){
+let addSection(message, thread){
 
     var newsection = {
         threadId : thread,
@@ -103,11 +103,11 @@ function addSection(message, thread){
     
 }
 
-function sentedit(error, message){
+let sentedit(error, message){
   console.log('edit sent ' + error);
   console.log(message);
 }
-function callbackMessage(error, message){
+let callbackMessage(error, message){
 //  console.log('message sent ' + error + message);
 }
 
