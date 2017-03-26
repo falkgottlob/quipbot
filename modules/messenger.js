@@ -87,6 +87,23 @@ function sendMessage(thread, message, responseto, parts){
 
     //respond(thread, 'error', annotation, null);
 }
+
+function addsection(thread, message){
+
+var newsection = {
+        threadId : thread,
+        content : message
+
+    }
+    console.log(newsection);
+qclient.editDocument(newsection, sentedit);    
+    
+}
+
+function sentedit(error, message){
+  console.log('edit sent ' + error);
+  console.log(message);
+}
 function callbackMessage(error, message){
 //  console.log('message sent ' + error + message);
 }
