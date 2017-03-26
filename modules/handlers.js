@@ -7,7 +7,7 @@ let salesforce = require('./salesforce'),
 
 
 exports.searchHouse = (thread) => {
-    messenger.addsection({"OK, looking for houses for sale around you...", thread);
+    messenger.addsection({text: `OK, looking for houses for sale around you...}`}, thread);
     salesforce.findProperties().then(properties => {
         messenger.addsection(formatter.formatProperties(properties), thread);
     });
@@ -62,5 +62,5 @@ exports.hi = (thread) => {
 };
 
 exports.help = (thread) => {
-    messenger.addsection({text: `You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes"`}, sender);
+    messenger.addsection({text: `You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", "3 bedrooms in Boston between 500000 and 750000", "show me price changes"`}, thread);
 };
