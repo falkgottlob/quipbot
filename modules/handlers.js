@@ -62,6 +62,6 @@ exports.hi = (thread) => {
 };
 
 exports.help = (thread) => {
-    messenger.addSection({text: `You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", 
-        "3 bedrooms in Boston between 500000 and 750000", "show me price changes"`}, thread);
+    messenger.sendMessage({text: `You can ask me questions like "Find houses in Boston", "3 bedrooms in Boston", 
+        "3 bedrooms in Boston between 500000 and 750000", "show me price changes"`}, thread, "", null);
 };
