@@ -37,7 +37,7 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
         connection.on('message', function(message) {
             if (message.type === 'utf8') {
                 console.log("Received: '" + message.utf8Data + "'");
-                parseMessage(message);
+                parseMessage(data, response);
             }
         });
    
@@ -46,8 +46,8 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
 
 });
 
-function parseMessage(message) {
-            
+function parseMessage(req, res) {
+         console.log("QUIP parsing " + req.type);   
     var req = JSON.parse(message.utf8Data);
     if(req.type == 'message'){
 
