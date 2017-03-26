@@ -6,7 +6,7 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     quipconnect = require('./modules/messenger'),
-	session = require('express-session');
+	session = require('express-session'),
 	MongoDBStore = require('connect-mongodb-session')(session),
 
     app = express();
