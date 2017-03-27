@@ -45,10 +45,11 @@ let getObject =  (records) => {
 
 
         org.sobject(sobject)
-  .find({}, fields )
-  .limit(limit)
-  .execute(function(err, resp) {
+          .find({}, fields )
+          .limit(limit)
+          .execute(function(err, resp) {
             if (err) {
+                console.error(err);
                 reject("An error as occurred");
             } else {
                
