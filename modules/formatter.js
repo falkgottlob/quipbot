@@ -10,7 +10,7 @@ let moment = require("moment"),
     var where,
         fields,
         limit = 10,
-        bject = {
+        object = {
             'case': function () {
               return 'Id, Subject, description, Status';
             },
