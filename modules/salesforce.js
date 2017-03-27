@@ -60,7 +60,7 @@ let getObject = (sobject) => {
             if (err) {
                 reject("An error as occurred");
             } else {
-                for (var i = 0, len = result.length; i < len; i++) {
+                for (var i = 0, len = resp.length; i < len; i++) {
                     delete resp[i].attributes;
                 }
                 resolve(resp);
