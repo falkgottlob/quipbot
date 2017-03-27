@@ -32,28 +32,20 @@ let login = () => {
 };
 
 let getObject =  (records) => {
-      return new Promise((resolve, reject) => {
-        let sboject = records;
-        let where = "";
+     
         let fields = "id, firstname, lastname";
-        let limit = "LIMIT 10";
-        let q = `SELECT ${fields} 
-                FROM ${sboject} 
-                ${limit}`;
-
-        org.query({query: q}, (err, resp) => {
-            if (err) {
-                reject("An error as occurred");
-            } else {
-               
-                if(resp.records && resp.records.length) {
-                    resp.records.forEach(function(rec) {
-                      console.log('Lead: ' + rec.get('FirstName') + ' ' + rec.get('LastName'));
-                    });
-                  }
-                
-                resolve(resp.records);
-            }
+        let limit = "10";
+  
+      return new Promise((resolve, reject) => {
+        org.sobject(records)
+            .find({}, fields )
+            .limit(limit)
+            .execute(function(err, resp) => {
+                if (err) {
+                    reject("An error as occurred");
+                } else {
+                    resolve(resp.records);
+                }
         });
     });
 

@@ -50,7 +50,7 @@ function parseMessage(message) {
     console.log("QUIP parsing Type: " + events.type); 
     
     if(events.type == 'message' && events.message.text.startsWith("#")){
-        console.log("QUIP parsing Text: " + events.message.text); 
+        //console.log("QUIP parsing Text: " + events.message.text); 
 
         let thread = events.thread.id;
         let annotation = '';
