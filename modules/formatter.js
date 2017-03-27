@@ -5,7 +5,7 @@ let moment = require("moment"),
     salesforce = require('./salesforce');
 
 
- exports.formatObject = sobject => {
+ exports.formatObject = (sobject) => {
       
     let where = "",
         fields = "",
@@ -13,22 +13,24 @@ let moment = require("moment"),
 
 console.log('############' + sobject + '############');
 
+
+
     switch (sobject) {
     case 'case':
-        fields ='Id, Subject, description, Status';
-        limit = "10";
+        fields = 'Id, Subject, description, Status';
+        limit = 10;
         break;
     case 'workorder':
-        fields ='id, Subject, Status';
-        limit = "10";
+        fields = 'id, Subject, Status';
+        limit =  10;
         break;
     case 'contact':
-        fields = "id, firstname, lastname, phone, email";
-        limit = "10";
+        fields = 'id, firstname, lastname, phone, email';
+        limit =  10;
         break;
     default:
         fields ='Id, Name';
-        limit = "10";
+        limit =  10;
     }
 console.log('############' + sobject + " " + fields + " " + limit + '############');
     return salesforce.getObject(sobject, fields, limit);
