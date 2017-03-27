@@ -14,7 +14,7 @@ hi hi
 help help
 objectList case
 objectList contact
-objectSearch find contact (.*)
+objectSearch find name (.*)
 objectList workorder
 objectList lead
 objectList oppertunity
