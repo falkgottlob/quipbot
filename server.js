@@ -6,9 +6,13 @@ var express = require('express'),
     postbacks = require('./modules/postbacks'),
     uploads = require('./modules/uploads'),
     quipconnect = require('./modules/messenger'),
-  session = require('express-session'),
-  MongoDBStore = require('connect-mongodb-session')(session),
-
+    session = require('express-session'),
+    MongoDBStore = require('connect-mongodb-session')(session),
+    SF_CLIENT_ID = process.env.SFDC_CONSUMER,
+    SF_CLIENT_SECRET = process.env.SFDC_SECRET,
+    SF_USER_NAME = process.env.SF_USER_NAME,
+    SF_PASSWORD = process.env.SF_PASSWORD,
+    SF_WHERE = process.env.WHERE,
     app = express();
     
 const pug = require('pug');    
@@ -60,4 +64,46 @@ res.render('home', { title: 'Hey', message: 'Hello there!' })
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
+});
+
+
+//
+// Salesforce connection
+//
+var sfcon;
+
+//
+// OAuth2 client information can be shared with multiple connections.
+//
+var oauth2 = new jsforce.OAuth2({
+  // you can change loginUrl to connect to sandbox or prerelease env.
+  // loginUrl : 'https://test.salesforce.com',
+  clientId : process.env.SFDC_CONSUMER,
+  clientSecret : process.env.SFDC_SECRET,
+  redirectUri : process.env.WHERE + '/oauth2/callback'
+});
+//
+// Get authz url and redirect to it.
+//
+app.get('/oauth2/auth', function(req, res) {
+  res.redirect(oauth2.getAuthorizationUrl({ scope : 'full refresh_token offline_access' }));
+});
+
+
+app.get('/oauth2/callback', function(req, res) {
+  var conn = new jsforce.Connection({ oauth2 : oauth2 });
+  var code = req.param('code');
+  conn.authorize(code, function(err, userInfo) {
+    if (err) { res.send('Error Authenticating, you didnt try org62 did you?'); return console.error(err); }
+    // Now you can get the access token, refresh token, and instance URL information.
+    // Save them to establish connection next time.
+    //req.session.sfdcconn = conn;
+    req.session.userinfo = userInfo;
+    req.session.sfdc_accessToken = conn.accessToken;
+    req.session.sfdc_refreshToken = conn.refreshToken;
+    req.session.sfdc_instanceUrl = conn.instanceUrl;
+    sfcon = conn;
+    res.send('connected to ' + conn.instanceUrl);
+    // ...
+  });
 });

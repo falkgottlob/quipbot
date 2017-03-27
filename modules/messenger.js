@@ -62,9 +62,9 @@ function parseMessage(message) {
         let result = processor.match(events.message.text);
                 
                 if (result) {
-                    console.log("Handler " + result.handlerName );
+                  
                     let handler = handlers[result.handler];
-                    console.log("QUIP handler Type: " + handler); 
+                   
                     
                     if (handler && typeof handler === "function") {
                         handler(thread, result.match);
