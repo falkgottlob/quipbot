@@ -7,6 +7,7 @@ var express = require('express'),
     uploads = require('./modules/uploads'),
     quipconnect = require('./modules/messenger'),
     session = require('express-session'),
+    jsforce = require('jsforce');
     MongoDBStore = require('connect-mongodb-session')(session),
     SF_CLIENT_ID = process.env.SFDC_CONSUMER,
     SF_CLIENT_SECRET = process.env.SFDC_SECRET,
