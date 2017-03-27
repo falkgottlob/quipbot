@@ -12,24 +12,21 @@ let moment = require("moment"),
         fields,
         limit;
 
-console.log('############' + type.length +'############');
-console.log('############' + type.includes("contact") +'############');
-console.log('############' + type.startsWith("contact") +'############');
-console.log('############' + type.endsWith("contact") +'############');
-    if (type === 'case') {
+
+    if (type.includes('case')) {
         fields = 'Id, Subject, description, Status';
         limit = 10;
-    } else if (type === 'workorder') {
+    } else if (type.includes('workorder')) {
         fields = 'id, Subject, Status';
         limit =  10;
-    } else if (type === 'contact') {
+    } else if (type.includes('contact')) {
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
     } else {
         fields ='Id, Name';
         limit =  10;
     }
-console.log('############' + type + " " + fields + " " + limit + '############');
+
     return salesforce.getObject(type, fields, limit);
 
 };  
