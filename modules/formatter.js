@@ -8,11 +8,9 @@ exports.formatTabel = records => {
     let elements = [];
     elements.push("Hello Falk");
     
-    return {
-        elements
-            }
-        }
-    };
+    return { elements }
+
+
 };
 
 exports.formatProperties = properties => {
