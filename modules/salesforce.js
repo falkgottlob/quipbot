@@ -46,13 +46,6 @@ let login = () => {
 };
   
 
-let removeAttribute = (resp) => {
-    for (var i=0; i<resp.length; i++) {
-        delete resp[i].attributes;
-    }
-    return {resp};
-};
-
 let getObject = (sobject) => {
       return new Promise((resolve, reject) => {
         
@@ -67,7 +60,10 @@ let getObject = (sobject) => {
             if (err) {
                 reject("An error as occurred");
             } else {
-                resolve(removeAttribute(resp));
+                for (var i = 0, len = result.length; i < len; i++) {
+                    delete resp[i].attributes;
+                }
+                resolve(resp);
             }
 
         });
