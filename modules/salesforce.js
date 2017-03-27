@@ -54,10 +54,9 @@ let getObject = (type, conditions, fields, limit, sort) => {
         //if(limit == null) limit = 10;
         //if(sort == null) sort = "{ CreatedDate: -1, Name : 1 }";
           //.sort(sort)
-           console.log('###############' + conditions);
         org.sobject(type)
           .find(conditions, fields)
-
+          .sort(sort)
           .limit(limit)
           .execute((err, resp) => {
             if (err) {
