@@ -44,36 +44,6 @@ let login = () => {
     });
 
 };
-  
-        
-
-let getCaseObject = (sobject) => {
-      
-    let where = "",
-        fields = "",
-        limit = "";
-
-    switch (sobject) {
-    case 'case':
-        fields ='Id, Subject, description, Status';
-        limit = "10";
-        break;
-    case 'workorder':
-        fields ='id, Subject, Status';
-        limit = "10";
-        break;
-    case 'contact':
-        fields = "id, firstname, lastname, phone, email";
-        limit = "10";
-        break;
-    default:
-        fields ='Id, Name';
-        limit = "10";
-    }
-
-    return getObject(sobject, fields, limit);
-
-};
 
 
 let getObject = (sobject, fields, limit) => {

@@ -11,6 +11,8 @@ let moment = require("moment"),
         fields = "",
         limit = "";
 
+console.log('############' + sobject + '############');
+
     switch (sobject) {
     case 'case':
         fields ='Id, Subject, description, Status';
