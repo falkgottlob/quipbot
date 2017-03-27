@@ -14,6 +14,7 @@ hi hi
 help help
 objectList case
 objectList contact
+objectList find contact (.*)
 objectList workorder
 objectList lead
 objectList oppertunity

@@ -11,7 +11,9 @@ const compiledFunction = pug.compileFile('./views/index.pug');
 
 exports.objectList = (thread, values) => {
 
-    console.log('Object selected: ' + values + ' ############');
+console.log("Received0 : '" + values[0] + "'");
+console.log("Received1: '" + values[1] + "'");
+console.log("Received1: '" + values[2] + "'");
     messenger.addSection(values, thread);
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values}), thread);
