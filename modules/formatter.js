@@ -7,11 +7,10 @@ let moment = require("moment"),
 
  exports.formatObject = selection => {
       
-    var type = "contact",
+    var type = new String(selection),
         where,
         fields,
         limit;
-
 
 
     if (type === 'case') {
