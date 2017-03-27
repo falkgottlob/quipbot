@@ -1,6 +1,6 @@
 "use strict";
 
-let nforce = require('nforce'),
+let jsforce = require('jsforce'),
 
     SF_CLIENT_ID = process.env.SFDC_CONSUMER,
     SF_CLIENT_SECRET = process.env.SFDC_SECRET,
@@ -12,23 +12,40 @@ let nforce = require('nforce'),
     //SF_USER_NAME = process.env.SF_USER_NAME,
     //SF_PASSWORD = process.env.SF_PASSWORD,
 
-let org = nforce.createConnection({
+
+
+let org = new jsforce.Connection({
+  oauth2 : {
+    // you can change loginUrl to connect to sandbox or prerelease env.
+    // loginUrl : 'https://test.salesforce.com',
     clientId: SF_CLIENT_ID,
     clientSecret: SF_CLIENT_SECRET,
     redirectUri : process.env.WHERE + '/oauth2/callback',
-    mode: 'single',
-    autoRefresh: true
+  }
 });
 
+
+
+
+
 let login = () => {
-    org.authenticate({username: SF_USER_NAME, password: SF_PASSWORD}, err => {
-        if (err) {
-            console.error("Authentication error");
-            console.error(err);
-        } else {
-            console.log("Salesforce: Authentication successful as " + SF_USER_NAME);
-        }
+    org.login(SF_USER_NAME, SF_PASSWORD, function(err, userInfo) {
+      if (err) { return console.error(err); }
+        // Now you can get the access token and instance URL information.
+        // Save them to establish connection next time.
+        console.log(conn.accessToken);
+        console.log(conn.instanceUrl);
+        // logged in user property
+        console.log("User ID: " + userInfo.id);
+        console.log("Org ID: " + userInfo.organizationId);
+        req.session.userinfo = userInfo;
+        req.session.sfdc_accessToken = conn.accessToken;
+        req.session.sfdc_refreshToken = conn.refreshToken;
+        req.session.sfdc_instanceUrl = conn.instanceUrl;
+       
+      // ...
     });
+
 };
 
 let getObject =  (sboject) => {
@@ -41,18 +58,18 @@ let getObject =  (sboject) => {
                 FROM ${sboject} 
                 ${limit}`;
 
-        org.query({query: q}, (err, resp) => {
+  org.sobject(sobject)
+  .find({}, fields )
+  .limit(limit)
+  .execute((err, resp) => {
             if (err) {
                 reject("An error as occurred");
             } else {
                
-                if(resp.records && resp.records.length) {
-                    resp.records.forEach(function(rec) {
-                      //console.log('@@@@Lead: ' + rec.get('FirstName') + ' ' + rec.get('LastName'));
-                    });
-                  }
+                
                 resolve(resp);
             }
+
         });
     });
 
