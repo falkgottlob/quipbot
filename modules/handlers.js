@@ -11,6 +11,7 @@ const compiledFunction = pug.compileFile('./views/index.pug');
 
 exports.objectList = (thread, values) => {
 
+console.log("Received : '" + values + "'");
 console.log("Received0 : '" + values[0] + "'");
 console.log("Received1: '" + values[1] + "'");
 console.log("Received1: '" + values[2] + "'");
@@ -23,6 +24,7 @@ console.log("Received1: '" + values[2] + "'");
 
 exports.objectSearch = (thread, values) => {
 
+console.log("Received : '" + values + "'");
 console.log("Received0 : '" + values[0] + "'");
 console.log("Received1: '" + values[1] + "'");
 console.log("Received1: '" + values[2] + "'");

@@ -13,7 +13,7 @@ priceChanges price changes
 hi hi
 help help
 objectList case
-objectList contact
+objectList contact (.*)
 objectSearch find name (.*)
 objectList workorder
 objectList lead
