@@ -44,24 +44,7 @@ let login = () => {
     });
 
 };
-
-let removeAttribute = (resp) => {
-
-    for (var i = 0, len = resp.length; i < len; i++) {
-
-        delete resp[i].attributes;
-    }
-    return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": elements
-            }
-        }
-    };
-
-}    
+  
 
 let removeAttribute = (resp) => {
     for (var i=0; i<resp.length; i++) {
