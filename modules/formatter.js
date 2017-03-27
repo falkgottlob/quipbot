@@ -7,12 +7,15 @@ let moment = require("moment"),
 
  exports.formatObject = selection => {
       
-    var type = new String(selection),
+    var type = selection,
         where,
         fields,
         limit;
 
-
+console.log('############' + type.length +'############');
+console.log('############' + type.includes("contact") +'############');
+console.log('############' + type.startsWith("contact") +'############');
+console.log('############' + type.endsWith("contact") +'############');
     if (type === 'case') {
         fields = 'Id, Subject, description, Status';
         limit = 10;
