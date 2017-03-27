@@ -116,7 +116,7 @@ let callbackMessage = (error, message) => {
 //  console.log('message sent ' + error + message);
 }
 
-let startnew(){
+let startnew = () => {
     client.connect(url.url, null, 'https://quip.com' , null , null);
 }     
 exports.sendMessage = sendMessage;
