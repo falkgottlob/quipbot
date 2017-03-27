@@ -39,7 +39,6 @@ let getObject =  (records) => {
         let limit = "LIMIT 10";
         let q = `SELECT ${fields} 
                 FROM ${sboject} 
-                ${where}
                 ${limit}`;
 
                 console.log("@@@@@@@@@@@@@@@@@@@@ " + q);
@@ -47,6 +46,8 @@ let getObject =  (records) => {
             if (err) {
                 reject("An error as occurred");
             } else {
+                console.log(resp.records);
+                
                 resolve(resp.records);
             }
         });
