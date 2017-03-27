@@ -35,7 +35,7 @@ let getObject =  (records) => {
       return new Promise((resolve, reject) => {
         let sboject = records;
         let where = "";
-        let fields = "id, lastname, firstname";
+        let fields = "id, firstname, lastname";
         let limit = "LIMIT 10";
         let q = `SELECT ${fields} 
                 FROM ${sboject} 
@@ -45,14 +45,14 @@ let getObject =  (records) => {
             if (err) {
                 reject("An error as occurred");
             } else {
-                result = resp.records;
-                //get rid of the attributes
-                for (var i = 0, len = result.length; i < len; i++) {
-                    console.log("@@@@@ " + result[i]);
-                    delete result[i].attributes;
-                }
+               
+                if(resp.records && resp.records.length) {
+                    resp.records.forEach(function(rec) {
+                      console.log('Lead: ' + rec.get('FirstName') + ' ' + rec.get('LastName'));
+                    });
+                  }
                 
-                resolve(result);
+                resolve(resp.records);
             }
         });
     });
