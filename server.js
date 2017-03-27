@@ -105,6 +105,7 @@ app.get('/oauth2/callback', function(req, res) {
     req.session.sfdc_instanceUrl = conn.instanceUrl;
     sfcon = conn;
     res.send('connected to ' + conn.instanceUrl);
+    console.log('Salesforce server connected to ' + conn.instanceUrl);
     // ...
   });
 });
