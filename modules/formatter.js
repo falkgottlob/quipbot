@@ -4,6 +4,17 @@ let moment = require("moment"),
     numeral = require("numeral");
 
 
+exports.formatTabel = records => {
+    let elements = [];
+    elements.push("Hello Falk");
+    
+    return {
+        elements
+            }
+        }
+    };
+};
+
 exports.formatProperties = properties => {
     let elements = [];
     console.log("QUIP elements: " + elements); 

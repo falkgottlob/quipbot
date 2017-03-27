@@ -7,15 +7,14 @@ let salesforce = require('./salesforce'),
 
 exports.contact = (thread, values) => {
     messenger.addSection("Contact", thread);
-    console.log("QUIP OBJECT: " + salesforce.getObject("contact")); 
-    salesforce.getObject("contact").then(table => {
-        messenger.addSection(formatter.formatTabel(table), thread);
+    salesforce.getObject("contact").then(records => {
+        messenger.addSection(formatter.formatTabel(records), thread);
     });
 };
 
 exports.searchHouse = (thread) => {
     messenger.addSection('OK, looking for houses for sale around you...', thread);
-    salesforce.getObject().then(properties => {
+    salesforce.findProperties().then(properties => {
         messenger.addSection(formatter.formatProperties(properties), thread);
     });
 };
