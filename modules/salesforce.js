@@ -41,14 +41,18 @@ let getObject =  (records) => {
                 FROM ${sboject} 
                 ${limit}`;
 
-                console.log("@@@@@@@@@@@@@@@@@@@@ " + q);
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
             } else {
-                console.log(resp.records);
+                result = resp.records;
+                //get rid of the attributes
+                for (var i = 0, len = result.length; i < len; i++) {
+                    console.log("@@@@@ " + result[i]);
+                    delete result[i].attributes;
+                }
                 
-                resolve(resp.records);
+                resolve(result);
             }
         });
     });
