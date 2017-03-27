@@ -45,25 +45,20 @@ let login = () => {
 
 };
 
-let getObject =  (sboject) => {
+let getObject = (sobject) => {
       return new Promise((resolve, reject) => {
         
         let where = "";
         let fields = "id, firstname, lastname, phone, email";
-        let limit = "LIMIT 10";
-        let q = `SELECT ${fields} 
-                FROM ${sboject} 
-                ${limit}`;
-
-  org.sobject(sobject)
-  .find({}, fields )
-  .limit(limit)
-  .execute((err, resp) => {
+        let limit = "10";
+       
+        org.sobject(sobject)
+          .find({}, fields )
+          .limit(limit)
+          .execute((err, resp) => {
             if (err) {
                 reject("An error as occurred");
             } else {
-               
-                
                 resolve(resp);
             }
 
