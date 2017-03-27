@@ -27,7 +27,7 @@ let moment = require("moment"),
         conditions.push({ LastName: { $like : "A%" } });
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
-        sort.push({ CreatedDate: -1, Name : 1 });
+        sort.push({ CreatedDate: -1, lastname : 1 });
     } else {
         fields ='Id, Name';
         limit =  10;
