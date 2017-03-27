@@ -33,15 +33,15 @@ let login = () => {
       if (err) { return console.error(err); }
         // Now you can get the access token and instance URL information.
         // Save them to establish connection next time.
-        console.log(conn.accessToken);
-        console.log(conn.instanceUrl);
+        console.log(org.accessToken);
+        console.log(org.instanceUrl);
         // logged in user property
         console.log("User ID: " + userInfo.id);
         console.log("Org ID: " + userInfo.organizationId);
         req.session.userinfo = userInfo;
-        req.session.sfdc_accessToken = conn.accessToken;
-        req.session.sfdc_refreshToken = conn.refreshToken;
-        req.session.sfdc_instanceUrl = conn.instanceUrl;
+        req.session.sfdc_accessToken = org.accessToken;
+        req.session.sfdc_refreshToken = org.refreshToken;
+        req.session.sfdc_instanceUrl = org.instanceUrl;
        
       // ...
     });
