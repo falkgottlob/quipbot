@@ -46,17 +46,17 @@ let login = () => {
 };
 
 
-let getObject = (sobject, conditions, fields, limit, sort) => {
+let getObject = (type, conditions, fields, limit, sort) => {
       return new Promise((resolve, reject) => {
         
         //if(fields == null) fields = "{}";
         //if(conditions == null) conditions = "{}";
         //if(limit == null) limit = 10;
         //if(sort == null) sort = "{ CreatedDate: -1, Name : 1 }";
-
-        org.sobject(sobject)
-          .find(conditions, fields)
           //.sort(sort)
+        org.sobject(type)
+          .find(conditions, fields)
+
           .limit(limit)
           .execute((err, resp) => {
             if (err) {

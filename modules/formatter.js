@@ -16,7 +16,7 @@ let moment = require("moment"),
 
 
     if (type.includes('case')) {
-        conditions = "{LastName : { $like : 'A%' }}";
+        conditions = `{ LastName : { $like : 'A%' } }`;
         fields = 'Id, Subject, description, Status';
         limit = 10;
         sort = null;
@@ -24,7 +24,7 @@ let moment = require("moment"),
         fields = 'id, Subject, Status';
         limit =  10;
     } else if (type.includes('contact')) {
-        conditions = "{LastName : { $like : 'A%' }}";
+        conditions = `{ LastName : { $like : 'A%' } }`;
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
         sort = "{ CreatedDate: -1, Name : 1 }";
