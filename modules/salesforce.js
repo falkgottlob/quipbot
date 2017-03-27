@@ -75,7 +75,7 @@ let getCaseObject = (sobject) => {
         limit = "10";
     }
 
-    return {getObject(sobject, fields, limit)};
+    return getObject(sobject, fields, limit);
 
 };
 
