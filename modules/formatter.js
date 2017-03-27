@@ -4,32 +4,6 @@ let moment = require("moment"),
     numeral = require("numeral");
 
 
-
-
-exports.formatTabel = records => {
-    let elements = [];
-
-    records.forEach(record => {
-            elements.push({
-
-                title: property.get("Title__c"),
-                subtitle: `${property.get("Address__c")}, ${property.get("City__c")} ${property.get("State__c")} · ${numeral(property.get("Price__c")).format('$0,0')}`,
-                "image_url": property.get("Picture__c"),
-               
-            })
-        }
-    );
-    return {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": elements
-            }
-        }
-    };
-};
-
 exports.formatProperties = properties => {
     let elements = [];
     console.log("QUIP elements: " + elements); 

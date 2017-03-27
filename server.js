@@ -22,10 +22,6 @@ const pug = require('pug');
 app.set('port', process.env.PORT || 5000);
 
 
-
-
-
-
 app.get('/', function (req, res) {
 res.render('home', { title: 'Hey', message: 'Hello there!' })
  // res.send('Hello World! ' + JSON.stringify(req.session))

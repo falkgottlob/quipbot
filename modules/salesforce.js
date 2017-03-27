@@ -26,7 +26,7 @@ let login = () => {
             console.error("Authentication error");
             console.error(err);
         } else {
-            console.log("Authentication successful");
+            console.log("Salesforce: Authentication successful as " + SF_USER_NAME);
         }
     });
 };
@@ -35,14 +35,17 @@ let getObject =  (object) => {
     
 
     return new Promise((resolve, reject) => {
-        let q = `SELECT id,
-                    Name 
-                FROM ListView 
-                WHERE SobjectType = '" +
-                object + "'"
-                LIMIT 5`;
+        let sboject = object;
+        let where = "";
+        let fields = "id, lastname, firstname";
+        let limit = "LIMIT 10";
+        let q = `SELECT ${fields} 
+                FROM ${sboject} 
+                ${where}
+                ${limit}`;
         org.query({query: q}, (err, resp) => {
             if (err) {
+                console.error(err);
                 reject("An error as occurred");
             } else {
                 resolve(resp.records);
