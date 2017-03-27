@@ -55,7 +55,7 @@ let getObject = (sobject, conditions, fields, limit, sort) => {
         //if(sort == null) sort = "{ CreatedDate: -1, Name : 1 }";
 
         org.sobject(sobject)
-          .find({conditions}, fields)
+          .find(conditions, fields)
           //.sort(sort)
           .limit(limit)
           .execute((err, resp) => {
