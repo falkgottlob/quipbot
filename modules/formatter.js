@@ -7,7 +7,8 @@ let moment = require("moment"),
 
  exports.formatObject = sobject => {
       
-    let where = "",
+    let sobject = sobject,
+        where = "",
         fields = "",
         limit = "";
 
@@ -30,7 +31,7 @@ console.log('############' + sobject + '############');
         fields ='Id, Name';
         limit = "10";
     }
-
+console.log('############' + sobject + " " + fields + " " + limit + '############');
     return salesforce.getObject(sobject, fields, limit);
 
 };  
