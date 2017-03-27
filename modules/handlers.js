@@ -9,8 +9,7 @@ const compiledFunction = pug.compileFile('./views/index.pug');
 
  
 
-exports.contact = (thread, values) => {
-   
+exports.objectList = (thread, values) => {
     messenger.addSection(values, thread);
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values}), thread);

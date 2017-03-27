@@ -12,9 +12,9 @@ searchHouse for sale
 priceChanges price changes
 hi hi
 help help
-case case
-contact contact
-workorder workorder
-lead lead
-oppertunity oppertunity
-account account
+objectList case
+objectList contact
+objectList workorder
+objectList lead
+objectList oppertunity
+objectList account

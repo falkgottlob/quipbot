@@ -2,7 +2,7 @@
 
 let moment = require("moment"),
     numeral = require("numeral"),
-    salesforce = require('./salesforce'),
+    salesforce = require('./salesforce');
 
 
  exports.formatObject = sobject => {
