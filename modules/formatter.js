@@ -11,7 +11,7 @@ let moment = require("moment"),
         fields = "",
         limit = "";
 
-console.log('############' + sobject + '############');
+console.log('Object selected: ' + sobject + ' ############');
 
 
 
@@ -32,7 +32,6 @@ console.log('############' + sobject + '############');
         fields ='Id, Name';
         limit =  10;
     }
-console.log('############' + sobject + " " + fields + " " + limit + '############');
     return salesforce.getObject(sobject, fields, limit);
 
 };  
