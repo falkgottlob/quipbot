@@ -15,8 +15,6 @@ rl.on('line', (line) => {
 
         var handler = line.substring(0, index);
         var utterance = line.substring(index + 1);
-        console.log('@@@@ handler: ' + handler);
-         console.log('@@@@ utterance: ' + utterance);
         utterances.push({utterance: utterance, handler:handler});
     }
 });
@@ -27,6 +25,8 @@ rl.on('close', () => {
 
 let match = text => {
     for (var i=0; i<utterances.length; i++) {
+
+        console.log('@@@@ utterance: ' + i + ' ' + utterances[i].utterance);
         var match = text.match(new RegExp(utterances[i].utterance, 'i'));
         if (match) {
             var handler = utterances[i].handler;
