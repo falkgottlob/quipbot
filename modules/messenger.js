@@ -47,7 +47,7 @@ rclient.get("https://platform.quip.com/1/websockets/new", args, function (data, 
 function parseMessage(message) {
      
     let events = JSON.parse(message.utf8Data);
-    console.log("QUIP parsing Type: " + events.type); 
+    //console.log("QUIP parsing Type: " + events.type); 
     
     if(events.type == 'message' && events.message.text.startsWith("#")){
         //console.log("QUIP parsing Text: " + events.message.text); 
@@ -109,8 +109,8 @@ let addSection = (message, thread) => {
 }
 
 let sentedit = (error, message) => {
-  console.log('edit sent ' + error);
-  console.log(message);
+  //console.log('edit sent ' + error);
+  //console.log(message);
 }
 let callbackMessage = (error, message) => {
 //  console.log('message sent ' + error + message);

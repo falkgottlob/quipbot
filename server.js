@@ -7,6 +7,8 @@ var express = require('express'),
     uploads = require('./modules/uploads'),
     quipconnect = require('./modules/messenger'),
     session = require('express-session'),
+    bodyParser   = require('body-parser'),
+    cookieParser = require('cookie-parser'),
 
     SF_CLIENT_ID = process.env.SFDC_CONSUMER,
     SF_CLIENT_SECRET = process.env.SFDC_SECRET,
@@ -16,16 +18,23 @@ var express = require('express'),
 
     app = express();
     
-const pug = require('pug');    
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
+app.use(cookieParser());
+app.use(session({ secret: 'somesecret', key: 'sid' }));  
 
 
 app.set('port', process.env.PORT || 5000);
 
+app.get('/', function(req, res){
+  res.render('index', {
+    title: 'nforce test app'
+  });
+});
 
-app.get('/', function (req, res) {
-res.render('home', { title: 'Hey', message: 'Hello there!' })
- // res.send('Hello World! ' + JSON.stringify(req.session))
-})
 
 app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

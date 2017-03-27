@@ -4,10 +4,10 @@ let moment = require("moment"),
     numeral = require("numeral");
 
 
-
+   
 exports.formatProperties = properties => {
     let elements = [];
-    console.log("QUIP elements: " + elements); 
+ 
     properties.forEach(property => {
             elements.push({
                 title: property.get("Title__c"),
