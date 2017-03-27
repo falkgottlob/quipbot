@@ -41,6 +41,8 @@ let getObject =  (records) => {
                 FROM ${sboject} 
                 ${where}
                 ${limit}`;
+
+                console.log("@@@@@@@@@@@@@@@@@@@@ " + q);
         org.query({query: q}, (err, resp) => {
             if (err) {
                 reject("An error as occurred");
