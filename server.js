@@ -8,7 +8,6 @@ var express = require('express'),
     quipconnect = require('./modules/messenger'),
     session = require('express-session'),
     bodyParser   = require('body-parser'),
-    cookieParser = require('cookie-parser'),
 
     SF_CLIENT_ID = process.env.SFDC_CONSUMER,
     SF_CLIENT_SECRET = process.env.SFDC_SECRET,
@@ -23,7 +22,6 @@ app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
-app.use(cookieParser());
 app.use(session({ secret: 'somesecret', key: 'sid' }));  
 
 
