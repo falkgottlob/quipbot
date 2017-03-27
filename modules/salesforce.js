@@ -36,7 +36,7 @@ let getObject =  (records) => {
         let fields = "id, firstname, lastname";
         let limit = "10";
   
-      return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         org.sobject(records)
             .find({}, fields )
             .limit(limit)
@@ -46,6 +46,7 @@ let getObject =  (records) => {
                 } else {
                     resolve(resp.records);
                 }
+            )
         });
     });
 
