@@ -55,7 +55,7 @@ let getObject = (type, conditions, fields, limit, sort) => {
         //if(sort == null) sort = "{ CreatedDate: -1, Name : 1 }";
           //.sort(sort)
         org.sobject(type)
-          .find({ LastName : { $like : 'A%' } }, fields)
+          .find({ conditions }, fields)
 
           .limit(limit)
           .execute((err, resp) => {
