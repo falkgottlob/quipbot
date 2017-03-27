@@ -12,7 +12,7 @@ let moment = require("moment"),
         conditions = [],
         fields,
         limit,
-        sort = [],
+        sort = [];
 
 
     if (type.includes('case')) {
