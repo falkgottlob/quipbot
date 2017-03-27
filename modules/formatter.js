@@ -3,16 +3,7 @@
 let moment = require("moment"),
     numeral = require("numeral");
 
-const pug = require('pug');
-const compiledFunction = pug.compileFile('./views/index.pug');
 
-exports.formatTabel (records, sobject){
-    console.log(compiledFunction({  records: records, rtype: sobject}));
-    
-    return { compiledFunction({  records: records, rtype: sobject}) }
-   
-
-};
 
 exports.formatProperties = properties => {
     let elements = [];

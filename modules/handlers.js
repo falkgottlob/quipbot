@@ -4,11 +4,14 @@ let salesforce = require('./salesforce'),
     messenger = require('./messenger'),
     formatter = require('./formatter');
 
+const pug = require('pug');
+const compiledFunction = pug.compileFile('./views/index.pug');
+
 
 exports.contact = (thread, values) => {
     messenger.addSection("Contact", thread);
     salesforce.getObject("contact").then(records => {
-        messenger.addSection(formatter.formatTabel(records,"contact"), thread);
+        messenger.addSection(compiledFunction({  records: records, rtype: "sobject"}), thread);
     });
 };
 
