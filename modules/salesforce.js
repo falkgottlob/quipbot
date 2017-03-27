@@ -31,9 +31,9 @@ let login = () => {
     });
 };
 
-let getObject =  (records) => {
+let getObject =  (sboject) => {
       return new Promise((resolve, reject) => {
-        let sboject = records;
+       
         let where = "";
         let fields = "id, firstname, lastname";
         let limit = "10";
@@ -44,7 +44,7 @@ let getObject =  (records) => {
 
 
 
-        org.sobject(sobject)
+        org.sobject(sboject)
           .find({}, fields )
           .limit(limit)
           .execute(function(err, resp) {
