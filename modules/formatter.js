@@ -15,22 +15,16 @@ let moment = require("moment"),
 console.log('############' + sobject + '############');
 
 
-
-
-    switch (type) {
-    case 'case':
+    if (type === 'case') {
         fields = 'Id, Subject, description, Status';
         limit = 10;
-        break;
-    case 'workorder':
+    } else if (type === 'workorder') {
         fields = 'id, Subject, Status';
         limit =  10;
-        break;
-    case 'contact':
+    } else if (type === 'contact') {
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
-        break;
-    default:
+    } else {
         fields ='Id, Name';
         limit =  10;
     }
