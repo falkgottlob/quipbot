@@ -5,6 +5,7 @@ let moment = require("moment"),
 
 
    
+
 exports.formatProperties = properties => {
     let elements = [];
  

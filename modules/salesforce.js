@@ -48,7 +48,7 @@ let getObject =  (sboject) => {
                
                 if(resp.records && resp.records.length) {
                     resp.records.forEach(function(rec) {
-                      console.log('@@@@Lead: ' + rec.get('FirstName') + ' ' + rec.get('LastName'));
+                      //console.log('@@@@Lead: ' + rec.get('FirstName') + ' ' + rec.get('LastName'));
                     });
                   }
                 resolve(resp.records);
