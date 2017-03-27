@@ -33,7 +33,7 @@ let moment = require("moment"),
         limit =  10;
     }
 
-    return salesforce.getObject(sobject, conditions, fields, limit, sort);
+    return salesforce.getObject(type, conditions, fields, limit, sort);
 
 };  
 
