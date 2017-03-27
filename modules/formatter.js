@@ -9,7 +9,7 @@ let moment = require("moment"),
       
     var type = selection,
         where,
-        condition,
+        conditions,
         fields,
         limit,
         sort;
