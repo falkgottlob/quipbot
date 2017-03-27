@@ -45,10 +45,6 @@ let login = () => {
 
 };
   
-
-  
-  
-   
         
 
 let getCaseObject = (sobject) => {
@@ -220,7 +216,7 @@ let createCase = (propertyId, customerName, customerId) => {
 
 login();
 
-exports.getCaseObject = getCaseObject;
+
 exports.getObject = getObject;
 exports.org = org;
 exports.findProperties = findProperties;

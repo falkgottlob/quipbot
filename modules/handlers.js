@@ -10,11 +10,10 @@ const compiledFunction = pug.compileFile('./views/index.pug');
  
 
 exports.contact = (thread, values) => {
-    var sobject = "Contact";
-    console.log("############" + values);
-    messenger.addSection(sobject, thread);
-    salesforce.getCaseObject(sobject).then(records => {
-        messenger.addSection(compiledFunction({  records: records, rtype: sobject}), thread);
+   
+    messenger.addSection(values, thread);
+    formatter.formatObject(values).then(records => {
+        messenger.addSection(compiledFunction({  records: records, rtype: values}), thread);
 
     });
 };

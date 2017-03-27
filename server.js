@@ -17,7 +17,8 @@ var express = require('express'),
 
     app = express();
     
-
+app.set('views', './views');
+app.set('view engine', 'pug');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(session({ secret: 'somesecret', key: 'sid' }));  

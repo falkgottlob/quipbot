@@ -1,10 +1,38 @@
 "use strict";
 
 let moment = require("moment"),
-    numeral = require("numeral");
+    numeral = require("numeral"),
+    salesforce = require('./salesforce'),
 
 
-   
+ exports.formatObject = sobject => {
+      
+    let where = "",
+        fields = "",
+        limit = "";
+
+    switch (sobject) {
+    case 'case':
+        fields ='Id, Subject, description, Status';
+        limit = "10";
+        break;
+    case 'workorder':
+        fields ='id, Subject, Status';
+        limit = "10";
+        break;
+    case 'contact':
+        fields = "id, firstname, lastname, phone, email";
+        limit = "10";
+        break;
+    default:
+        fields ='Id, Name';
+        limit = "10";
+    }
+
+    return salesforce.getObject(sobject, fields, limit);
+
+};  
+
 
 exports.formatProperties = properties => {
     let elements = [];
