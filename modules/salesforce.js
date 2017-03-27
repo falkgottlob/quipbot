@@ -46,13 +46,43 @@ let login = () => {
 };
   
 
-let getObject = (sobject) => {
+  
+  
+   
+        
+
+let getCaseObject = (sobject) => {
+      
+    let where = "",
+        fields = "",
+        limit = "";
+
+    switch (sobject) {
+    case 'case':
+        fields ='Id, Subject, description, Status';
+        limit = "10";
+        break;
+    case 'workorder':
+        fields ='id, Subject, Status';
+        limit = "10";
+        break;
+    case 'contact':
+        fields = "id, firstname, lastname, phone, email";
+        limit = "10";
+        break;
+    default:
+        fields ='Id, Name';
+        limit = "10";
+    }
+
+    return {getObject = (sobject, fields, limit);}
+
+};
+
+
+let getObject = (sobject, fields, limit) => {
       return new Promise((resolve, reject) => {
         
-        let where = "";
-        let fields = "id, firstname, lastname, phone, email";
-        let limit = "10";
-       
         org.sobject(sobject)
           .find({}, fields )
           .limit(limit)
