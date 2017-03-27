@@ -7,34 +7,32 @@ let moment = require("moment"),
 
  exports.formatObject = (sobject) => {
       
-    let where = "",
-        fields = "",
-        limit = "";
+    var where,
+        fields,
+        limit = 10,
+        bject = {
+            'case': function () {
+              return 'Id, Subject, description, Status';
+            },
+            'workorder': function () {
+              return 'id, Subject, Status';
+            },
+            'contact': function () {
+              return 'id, firstname, lastname, phone, email';
+            },
+            'default': function () {
+              return 'Id, Name';
+            }
+          };
 
-console.log('Object selected: ' + sobject + ' ############');
+  if (object[sobject]) {
+    fields = object[sobject];
+  } else {
+    fields = object['default'];
+  }
 
-
-
-    switch (sobject) {
-    case 'case':
-        fields = 'Id, Subject, description, Status';
-        limit = 10;
-        break;
-    case 'workorder':
-        fields = 'id, Subject, Status';
-        limit =  10;
-        break;
-    case 'contact':
-        fields = 'id, firstname, lastname, phone, email';
-        limit =  10;
-        break;
-    default:
-        fields ='Id, Name';
-        limit =  10;
-    }
-    return salesforce.getObject(sobject, fields, limit);
-
-};  
+  return salesforce.getObject(sobject, fields, limit);
+};
 
 
 exports.formatProperties = properties => {
