@@ -1,7 +1,7 @@
 
 h1= title=rtype
 ul
-  - for record in records
+  each record in records
     li= record.get("Name")
 
 
