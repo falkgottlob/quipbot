@@ -35,7 +35,7 @@ let getObject =  (sboject) => {
       return new Promise((resolve, reject) => {
         
         let where = "";
-        let fields = "id, firstname, lastname";
+        let fields = "id, firstname, lastname, phone, email";
         let limit = "LIMIT 10";
         let q = `SELECT ${fields} 
                 FROM ${sboject} 
@@ -51,7 +51,7 @@ let getObject =  (sboject) => {
                       //console.log('@@@@Lead: ' + rec.get('FirstName') + ' ' + rec.get('LastName'));
                     });
                   }
-                resolve(resp.records);
+                resolve(resp);
             }
         });
     });

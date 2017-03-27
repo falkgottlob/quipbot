@@ -12,7 +12,7 @@ const compiledFunction = pug.compileFile('./views/index.pug');
 exports.contact = (thread, values) => {
     messenger.addSection("Contact", thread);
     salesforce.getObject("contact").then(records => {
-        messenger.addSection(compiledFunction({  records: records.toJSON, rtype: "sobject"}), thread);
+        messenger.addSection(compiledFunction({  records: records, rtype: "sobject"}), thread);
 
     });
 };
