@@ -7,8 +7,7 @@ let moment = require("moment"),
 
  exports.formatObject = sobject => {
       
-    let sobject = sobject,
-        where = "",
+    let where = "",
         fields = "",
         limit = "";
 
