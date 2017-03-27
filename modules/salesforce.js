@@ -38,10 +38,7 @@ let login = () => {
         // logged in user property
         console.log("User ID: " + userInfo.id);
         console.log("Org ID: " + userInfo.organizationId);
-        req.session.userinfo = userInfo;
-        req.session.sfdc_accessToken = org.accessToken;
-        req.session.sfdc_refreshToken = org.refreshToken;
-        req.session.sfdc_instanceUrl = org.instanceUrl;
+       
        
       // ...
     });
