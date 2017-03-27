@@ -14,7 +14,7 @@ exports.contact = (thread, values) => {
 
 exports.searchHouse = (thread) => {
     messenger.addSection('OK, looking for houses for sale around you...', thread);
-    salesforce.findProperties().then(properties => {
+    salesforce.getObject().then(properties => {
         messenger.addSection(formatter.formatProperties(properties), thread);
     });
 };
