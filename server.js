@@ -24,18 +24,6 @@ app.set('port', process.env.PORT || 5000);
 
 
 
-var store = new MongoDBStore(
-      {
-        uri: process.env.MONGODB_URI,
-        collection: 'QuipBotSessions'
-      });
- 
-    // Catch errors 
-    store.on('error', function(error) {
-      //assert.ifError(error);
-      //assert.ok(false);
-      console.log(error);
-    });
 
 
 app.get('/', function (req, res) {
