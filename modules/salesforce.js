@@ -67,6 +67,27 @@ let getObject = (sobject, fields, limit) => {
 
 };
 
+let searchObject = (sobject, fields, limit) => {
+      return new Promise((resolve, reject) => {
+        
+        org.sobject(sobject)
+          .find({}, fields )
+          .limit(limit)
+          .execute((err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else {
+                for (var i = 0, len = resp.length; i < len; i++) {
+                    delete resp[i].attributes;
+                }
+                resolve(resp);
+            }
+
+        });
+    });
+
+};
+
 let findProperties = (params) => {
     let where = "";
     if (params) {

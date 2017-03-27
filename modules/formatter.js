@@ -9,25 +9,31 @@ let moment = require("moment"),
       
     var type = selection,
         where,
+        condition,
         fields,
-        limit;
+        limit,
+        sort;
 
 
     if (type.includes('case')) {
+        conditions = "$like : 'A%'";
         fields = 'Id, Subject, description, Status';
         limit = 10;
+        sort = null;
     } else if (type.includes('workorder')) {
         fields = 'id, Subject, Status';
         limit =  10;
     } else if (type.includes('contact')) {
+        conditions = "$like : 'A%'";
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
+        sort = null;
     } else {
         fields ='Id, Name';
         limit =  10;
     }
 
-    return salesforce.getObject(type, fields, limit);
+    return salesforce.getObject(sobject, conditions, fields, limit, sort);
 
 };  
 
