@@ -12,8 +12,11 @@ const rl = readline.createInterface({
 rl.on('line', (line) => {
     var index = line.indexOf(' ');
     if (index>0) {
+
         var handler = line.substring(0, index);
         var utterance = line.substring(index + 1);
+        console.log('@@@@ handler: ' + handler);
+         console.log('@@@@ utterance: ' + utterance);
         utterances.push({utterance: utterance, handler:handler});
     }
 });

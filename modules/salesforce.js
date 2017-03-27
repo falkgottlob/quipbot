@@ -56,7 +56,7 @@ let getObject = (type, conditions, fields, limit, sort) => {
           //.sort(sort)
         org.sobject(type)
           .find(conditions, fields)
-          .sort(sort)
+          //.sort(sort)
           .limit(limit)
           .execute((err, resp) => {
             if (err) {
