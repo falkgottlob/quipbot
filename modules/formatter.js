@@ -3,13 +3,14 @@
 let moment = require("moment"),
     numeral = require("numeral");
 
+const pug = require('pug');
+const compiledFunction = pug.compileFile('./views/index.pug');
 
-exports.formatTabel = records => {
-    let elements = [];
-    elements.push("Hello Falk");
+exports.formatTabel (records, sobject){
+    console.log(compiledFunction({  records: records, rtype: sobject}));
     
-    return { elements }
-
+    return { compiledFunction({  records: records, rtype: sobject}) }
+   
 
 };
 

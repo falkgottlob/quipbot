@@ -31,11 +31,9 @@ let login = () => {
     });
 };
 
-let getObject =  (object) => {
-    console.log("object#####################" + object);
-
-    return new Promise((resolve, reject) => {
-        let sboject = object;
+let getObject =  (records) => {
+      return new Promise((resolve, reject) => {
+        let sboject = records;
         let where = "";
         let fields = "id, lastname, firstname";
         let limit = "LIMIT 10";
@@ -44,12 +42,9 @@ let getObject =  (object) => {
                 ${where}
                 ${limit}`;
         org.query({query: q}, (err, resp) => {
-
             if (err) {
-                console.error("err#####################" + err);
                 reject("An error as occurred");
             } else {
-                 console.log("records#####################" + resp.records);
                 resolve(resp.records);
             }
         });
