@@ -13,7 +13,6 @@ exports.contact = (thread, values) => {
     messenger.addSection("Contact", thread);
     salesforce.getObject("contact").then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: "sobject"}), thread);
-         messenger.addSection(res.render('query', { title: 'query results', records: records}), thread);
     });
 };
 

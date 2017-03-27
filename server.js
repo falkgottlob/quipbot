@@ -17,9 +17,7 @@ var express = require('express'),
 
     app = express();
     
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(session({ secret: 'somesecret', key: 'sid' }));  
@@ -28,9 +26,7 @@ app.use(session({ secret: 'somesecret', key: 'sid' }));
 app.set('port', process.env.PORT || 5000);
 
 app.get('/', function(req, res){
-  res.render('index', {
-    title: 'nforce test app'
-  });
+  res.render('home', { title: 'Hey', message: 'Hello there!' })
 });
 
 
