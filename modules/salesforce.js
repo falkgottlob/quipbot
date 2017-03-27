@@ -32,7 +32,7 @@ let login = () => {
 };
 
 let getObject =  (object) => {
-    
+    console.log("object#####################" + object);
 
     return new Promise((resolve, reject) => {
         let sboject = object;
@@ -44,10 +44,12 @@ let getObject =  (object) => {
                 ${where}
                 ${limit}`;
         org.query({query: q}, (err, resp) => {
+
             if (err) {
-                console.error(err);
+                console.error("err#####################" + err);
                 reject("An error as occurred");
             } else {
+                 console.log("records#####################" + resp.records);
                 resolve(resp.records);
             }
         });
