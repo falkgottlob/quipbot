@@ -8,6 +8,7 @@ let moment = require("moment"),
  exports.formatObject = values => {
       
     let type = values,
+        obj,
         where,
         conditions = [],
         fields,
@@ -16,17 +17,17 @@ let moment = require("moment"),
 console.log("type0 : '" + type[0] + "'");
 console.log("type1: '" + type[1] + "'");
 console.log("type1: '" + type[2] + "'");
+    obj = type[0].toLowerCase();
 
-
-    if (type[1] === 'case') {
+    if (obj === 'case') {
         conditions.push({ LastName: { $like : "A%" } });
         fields = 'Id, Subject, description, Status';
         limit = 10;
         sort.push({ CreatedDate: -1, Name : 1 });
-    } else if (type[1]  === 'workorder') {
+    } else if (obj  === 'workorder') {
         fields = 'id, Subject, Status';
         limit =  10;
-    } else if (type[1]  === 'contact') {
+    } else if (obj  === 'contact') {
         conditions.push({ LastName: { $like : "A%" } });
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
@@ -36,7 +37,7 @@ console.log("type1: '" + type[2] + "'");
         limit =  10;
     }
 
-    return salesforce.getObject(type[1], conditions, fields, limit, sort);
+    return salesforce.getObject(obj, conditions, fields, limit, sort);
 
 };  
 

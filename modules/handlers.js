@@ -19,7 +19,7 @@ console.log("Received1: '" + values[2] + "'");
 messenger.addSection(values[0], thread);
 
 if(values[1]){
-    messenger.addSection('OK, looking for ${values[1]}', thread);
+    messenger.addSection('OK, looking for ' + values[1], thread);
 }
 
 
