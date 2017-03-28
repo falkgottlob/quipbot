@@ -23,12 +23,13 @@ exports.objectList = (thread, values) => {
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
-    var html = messenger.getQuipContent('IWZAAAwIVwK', thread);
+    
+    messenger.addQuipContent('IWZAAAwIVwK', thread);
 
     //messenger.addSection(html, thread);
 
     formatter.formatObject(values).then(records => {
-        messenger.addSection(html + compiledFunction({  records: records, rtype: values[0]}), thread);
+        messenger.addSection(hcompiledFunction({  records: records, rtype: values[0]}), thread);
 
     });
 };

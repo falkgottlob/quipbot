@@ -120,15 +120,14 @@ let addSection = (message, thread) => {
     
 }
 
-let getQuipContent = (quipid, thread) => {
+let addQuipContent = (quipid, thread) => {
 
     //console.log("QUIP newsection: " + newsection); 
     //console.log("QUIP sentedit: " + sentedit); 
     qclient.getThread(quipid, function(err, threads){
         if (err) {  console.error(err); }
         //html = cheerio.load(threads.html);
-
-        return threads.html;  
+        messenger.addSection(threads.html, thread);
     });
     
 }
