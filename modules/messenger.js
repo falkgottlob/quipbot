@@ -64,13 +64,14 @@ function parseMessage(message) {
         console.log('@@@@ text: ' + events.message.text);
 
         let result = processor.match(events.message.text);
-                
+                console.log('@@@@ result: ' + result);
                 if (result) {
                   
                     let handler = handlers[result.handler];
-                   
+                    console.log('@@@@ handler: ' + handler);
                     
                     if (handler && typeof handler === "function") {
+                        console.log('@@@@ result.match: ' + result.match);
                         handler(thread, result.match);
                     } else {
                         console.log("Handler " + result.handlerName + " is not defined");
