@@ -23,7 +23,9 @@ exports.objectList = (thread, values) => {
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
-    messenger.addSection(messenger.getQuipContent("", thread), thread);
+    var html = messenger.getQuipContent('b8n2AhIJdgkK', thread);
+
+    messenger.addSection(html, thread);
 
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);

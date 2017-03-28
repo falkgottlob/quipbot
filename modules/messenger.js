@@ -123,12 +123,13 @@ let addSection = (message, thread) => {
 let getQuipContent = (quipid, thread) => {
 
     var html = "",
-        quipid = "b8n2AhIJdgkK";
+        quipid = 'b8n2AhIJdgkK';
 
     //console.log("QUIP newsection: " + newsection); 
     //console.log("QUIP sentedit: " + sentedit); 
-    html = dqclient.getThread(quipid, function(err, threads){
-        html = threads.html;
+    dqclient.getThread(quipid, function(err, threads){
+        if (err) { return console.error(err); }
+        var html = threads.html;
     });
     
     console.log(html);
