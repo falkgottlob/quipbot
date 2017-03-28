@@ -28,7 +28,7 @@ exports.objectList = (thread, values) => {
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
 
-    templateAdd('IWZAAAwIVwK', thread);
+    handlers.templateAdd('IWZAAAwIVwK', thread);
     
     //messenger.addQuipContent('IWZAAAwIVwK', thread);
 
