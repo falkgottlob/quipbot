@@ -89,64 +89,6 @@ function parseMessage(message) {
 
 }
 
-function uploadtable(thread, annotation, message){
-
-    var uploadfields = [];
-    var uploadData;
-    
-    //sobject name is in second argument
-    var sobject = message.split(' ')[1];
-    var $;
-   
-   //get the latest thread from quip
-   
-   qclient.getThread(thread, function(err, threads){
-     $ = cheerio.load(threads.html);
-     //first find the header in the table with sobject name
-     $('table[title=' + sobject + ']').find('thead span').each(function(i, elem) {
-       uploadfields.push($(this).text());
-       //console.log($(this).text());
-       });;
-       //create array to store all records in
-      var uploadtable = [];
-      //loop trough all table rows
-    $('table[title=' + sobject + ']').find('tr').each(function(i, elem) {
-    
-    //dont care about the header
-      if(i == 0){return;} 
-      //new datarow
-      var datarow = {};
-      
-       $(this).find('span').each(function(t, elem) {
-         var rowfield = {};
-         //add fields to datarow
-         datarow[uploadfields[t]] = $(this).text();
-         //datarow.push(rowfield);
-         //console.log(i + ' ' + $(this).text());
-
-        })
-       uploadtable.push(datarow);
-});; 
-     
-     //do a bulkupdate, otherwise api gets killed
-     sfcon.sobject(sobject).bulkload('update', uploadtable,
-function(err, rets) {
-  if (err) { return console.error(err); }
-  for (var i=0; i < rets.length; i++) {
-    if (rets[i].success) {
-      console.log("Updated Successfully : " + rets[i].id);
-    } else {
-    console.log(rets);
-    }
-  }
-});
-     
-   //  console.log(uploadtable);
-   })
-     
-     
-     
-}
 
 
  //addsection(thread, compiledFunction({  records: result, rtype: sobject}));
@@ -178,7 +120,26 @@ let addSection = (message, thread) => {
     
 }
 
+let getQuipContent = (quipid, thread) => {
+
+
+    var html = "",
+        quipid = "b8n2AhIJdgkK";
+
+    //console.log("QUIP newsection: " + newsection); 
+    //console.log("QUIP sentedit: " + sentedit); 
+    html = dqclient.getThread(quipid, "");
+    return  = cheerio.load(threads.html);
+
+    qclient.editDocument(quipid, sentedit);    
+    
+}
+
 let sentedit = (error, message) => {
+  //console.log('edit sent ' + error);
+  //console.log(message);
+}
+let getHtml = (error, message) => {
   //console.log('edit sent ' + error);
   //console.log(message);
 }

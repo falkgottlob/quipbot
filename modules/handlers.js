@@ -18,15 +18,12 @@ exports.objectList = (thread, values) => {
 
     messenger.addSection(values[0], thread);
 
-    client.getThread("b8n2AhIJdgkK", function(err, threads){
-        $ = cheerio.load(threads.html);
-        messenger.addSection($, thread);
-    });
+    
 
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
-
+    messenger.addSection(messenger.getQuipContent("", thread), thread);
 
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
