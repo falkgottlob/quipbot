@@ -131,9 +131,8 @@ let getQuipContent = (quipid, thread) => {
         //html = cheerio.load(threads.html);
         html = threads.html;
         console.log(html);
-        addSection(html, thread);
-   
-    }); 
+        return html;  
+    });
     
 }
 
