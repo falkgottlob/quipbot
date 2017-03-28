@@ -60,12 +60,9 @@ function parseMessage(message) {
         let records = [];
         let values = [];
 
-        console.log('@@@@ thread: ' + thread);
-        console.log('@@@@ annotation: ' + annotation);
-        console.log('@@@@ text: ' + events.message.text);
 
         let valueText = events.message.text.substring(1);
-        console.log('@@@@ valueText: ' + valueText);
+
         let valueResult = valueText.split(" ");
   
         for (var i = 0, len = valueResult.length; i < len; i++) {

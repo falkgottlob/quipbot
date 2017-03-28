@@ -30,7 +30,7 @@ let match = text => {
             var handler = utterances[i].handler;
             return {handler, match};
         } else {
-            console.log('no match');
+            //console.log('no match');
         }
     }
 };
