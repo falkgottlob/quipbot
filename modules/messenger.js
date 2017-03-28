@@ -127,7 +127,7 @@ let addQuipContent = (quipid, thread) => {
     qclient.getThread(quipid, function(err, threads){
         if (err) {  console.error(err); }
         //html = cheerio.load(threads.html);
-        messenger.addSection(threads.html, thread);
+        addSection(threads.html, thread);
     });
     
 }
