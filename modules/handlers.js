@@ -9,16 +9,33 @@ const compiledFunction = pug.compileFile('./views/index.pug');
 
 
 
-let templateAdd = (quipid, thread) => { 
+let templatehelper = (quipid, thread) => { 
     
     messenger.addQuipContent(quipid, thread);
 
 };
 
+exports.addTemplate  = (thread, values) => {
+
+    if(values[1]){
+        var sel = values[1];
+        if (sel === '1') {
+            template = 'IWZAAAwIVwK';
+        } else {
+            template = 'IWZAAAwIVwK';
+        }
+      
+    } else {
+            template = 'IWZAAAwIVwK';
+    }
+
+    templatehelper(template, thread);
+};   
+
 exports.objectTemplate = (thread, values) => {
 
     console.log("######### Adding Template");
-    templateAdd('IWZAAAwIVwK', thread);
+    templatehelper('IWZAAAwIVwK', thread);
     console.log("######### Adding table");
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);

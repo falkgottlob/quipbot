@@ -19,3 +19,4 @@ objectSearch find contact (.*)
 objectList workorder
 objectList lead
 objectList oppertunity
+addTemplate template
