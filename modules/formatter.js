@@ -2,6 +2,7 @@
 
 let moment = require("moment"),
     numeral = require("numeral"),
+    salesforce = require('./messenger'),
     salesforce = require('./salesforce');
 
 
@@ -37,7 +38,7 @@ let moment = require("moment"),
         limit =  10;
     }
 
-salesforce.templateAdd('IWZAAAwIVwK');
+    messenger.templateAdd('IWZAAAwIVwK');
 
 
     return salesforce.getObject(obj, conditions, fields, limit, sort);
