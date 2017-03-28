@@ -130,10 +130,10 @@ let getQuipContent = (quipid, thread) => {
         if (err) {  console.error(err); }
         //html = cheerio.load(threads.html);
         html = threads.html;
+        console.log(html);
+        addSection(html, thread);
    
-    });
-    console.log(html);
-    return html;   
+    }); 
     
 }
 
