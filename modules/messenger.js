@@ -128,10 +128,11 @@ let getQuipContent = (quipid, thread) => {
     //console.log("QUIP sentedit: " + sentedit); 
     qclient.getThread(quipid, function(err, threads){
         if (err) {  console.error(err); }
+        onsole.log("@@@@@@@@@@QUIP : " + threads.html); 
         html = cheerio.load(threads.html);
    
     });
-    console.log("@@@@@@@@@@QUIP : " + threads.html); 
+    c
     console.log(html);
     return html;   
     
