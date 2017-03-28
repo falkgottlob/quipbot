@@ -63,12 +63,19 @@ function parseMessage(message) {
         console.log('@@@@ annotation: ' + annotation);
         console.log('@@@@ text: ' + events.message.text);
 
+        var myString = events.message.text;
+
+        var mySplitResult = myString.split(" ");
+
+        for(i = 0; i < mySplitResult.length; i++){
+        console.log("Element " + i + " = " + mySplitResult[i]); 
+        }
+
         let result = processor.match(events.message.text);
-                console.log('@@@@ result: ' + result);
+
                 if (result) {
                   
                     let handler = handlers[result.handler];
-                    console.log('@@@@ handler: ' + handler);
                     
                     if (handler && typeof handler === "function") {
                         console.log('@@@@ result.match: ' + result.match);
