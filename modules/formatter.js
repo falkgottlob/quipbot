@@ -30,9 +30,9 @@ let moment = require("moment"),
         if(values[1]) {
             conditions.push({ name: { $like :  type[1] + '%' } });
         }   
-        fields = 'id, name, stage, annualrevenue, yearstarted';
+        fields = 'id, name, annualrevenue, yearstarted';
         limit =  10;
-        sort.push({ CreatedDate: -1, lname : 1 });
+        sort.push({ CreatedDate: -1, name : 1 });
     } else if (obj  === 'contact') {
         if(values[1]) {
             conditions.push({ name: { $like :  type[1] + '%' } });
