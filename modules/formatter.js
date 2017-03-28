@@ -37,7 +37,7 @@ let moment = require("moment"),
         limit =  10;
     }
 
-    messenger.templateAdd('IWZAAAwIVwK');
+    messenger.addQuipContent('IWZAAAwIVwK');
 
 
     return salesforce.getObject(obj, conditions, fields, limit, sort);
