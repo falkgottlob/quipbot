@@ -127,8 +127,12 @@ let getQuipContent = (quipid, thread) => {
 
     //console.log("QUIP newsection: " + newsection); 
     //console.log("QUIP sentedit: " + sentedit); 
-    html = dqclient.getThread(quipid, "");
-    return  cheerio.load(threads.html);   
+    html = dqclient.getThread(quipid, function(err, threads){
+        html = threads.html;
+    });
+    
+
+    return html;   
     
 }
 
