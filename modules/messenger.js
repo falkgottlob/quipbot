@@ -131,7 +131,7 @@ let getQuipContent = (quipid, thread) => {
         html = cheerio.load(threads.html);
    
     });
-    
+    console.log("@@@@@@@@@@QUIP : " + threads.html)); 
     console.log(html);
     return html;   
     
