@@ -26,6 +26,13 @@ let moment = require("moment"),
     } else if (obj  === 'workorder') {
         fields = 'id, Subject, Status';
         limit =  10;
+    } else if (obj  === 'account') {
+        if(values[1]) {
+            conditions.push({ name: { $like :  type[1] + '%' } });
+        }   
+        fields = 'id, name, stage,annualrevenue, yearstarted';
+        limit =  10;
+        sort.push({ CreatedDate: -1, lastname : 1 });
     } else if (obj  === 'contact') {
         if(values[1]) {
             conditions.push({ name: { $like :  type[1] + '%' } });
