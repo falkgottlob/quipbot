@@ -5,14 +5,17 @@ let moment = require("moment"),
     salesforce = require('./salesforce');
 
 
- exports.formatObject = selection => {
+ exports.formatObject = values => {
       
-    let type = selection,
+    let type = values,
         where,
         conditions = [],
         fields,
         limit,
         sort = [];
+console.log("type0 : '" + type[0] + "'");
+console.log("type1: '" + type[1] + "'");
+console.log("type1: '" + type[2] + "'");
 
 
     if (type[1] === 'case') {
