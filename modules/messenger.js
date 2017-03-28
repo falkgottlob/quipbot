@@ -57,18 +57,20 @@ function parseMessage(message) {
         if(events.message.annotation){
           annotation = events.message.annotation.id;
         }
-        var records = [];
+        let records = [];
+        let values = [];
 
         console.log('@@@@ thread: ' + thread);
         console.log('@@@@ annotation: ' + annotation);
         console.log('@@@@ text: ' + events.message.text);
 
-        var myString = events.message.text;
-
-        var mySplitResult = myString.split(" ");
-
-        for (var i = 0, len = mySplitResult.length; i < len; i++) {
-            console.log("Element " + i + " = " + mySplitResult[i]); 
+        let valueText = events.message.text.substring(1);
+        console.log('@@@@ valueText: ' + valueText);
+        let valueResult = valueText.split(" ");
+  
+        for (var i = 0, len = valueResult.length; i < len; i++) {
+            console.log("Element " + i + " = " + valueResult[i]); 
+            values.push(valueResult[i]); 
         }
 
         let result = processor.match(events.message.text);
