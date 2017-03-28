@@ -16,7 +16,7 @@ exports.objectList = (thread, values) => {
     console.log("Received1: '" + values[1] + "'");
     console.log("Received1: '" + values[2] + "'");
 
-    messenger.addSection(values[0], thread);
+    //messenger.addSection(values[0], thread);
 
     
 

@@ -122,16 +122,13 @@ let addSection = (message, thread) => {
 
 let getQuipContent = (quipid, thread) => {
 
-    var html = "Hi Falk";
-
     //console.log("QUIP newsection: " + newsection); 
     //console.log("QUIP sentedit: " + sentedit); 
     qclient.getThread(quipid, function(err, threads){
         if (err) {  console.error(err); }
         //html = cheerio.load(threads.html);
-        html = threads.html;
-        console.log(html);
-        return html;  
+
+        return threads.html;  
     });
     
 }
