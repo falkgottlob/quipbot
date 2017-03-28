@@ -67,8 +67,8 @@ function parseMessage(message) {
 
         var mySplitResult = myString.split(" ");
 
-        for(i = 0; i < mySplitResult.length; i++){
-        console.log("Element " + i + " = " + mySplitResult[i]); 
+        for (var i = 0, len = mySplitResult.length; i < len; i++) {
+            console.log("Element " + i + " = " + mySplitResult[i]); 
         }
 
         let result = processor.match(events.message.text);
