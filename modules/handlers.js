@@ -7,9 +7,9 @@ let salesforce = require('./salesforce'),
 const pug = require('pug');
 const compiledFunction = pug.compileFile('./views/index.pug');
 
-exports.templateAdd = (thread) => { 
+exports.templateAdd = (quipid, thread) => { 
     
-    messenger.addQuipContent(thread, thread);
+    messenger.addQuipContent(quipid, thread);
 
 };
 
@@ -27,6 +27,8 @@ exports.objectList = (thread, values) => {
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
+
+    addQuipContent('IWZAAAwIVwK', thread);
     
     //messenger.addQuipContent('IWZAAAwIVwK', thread);
 
