@@ -59,6 +59,10 @@ function parseMessage(message) {
         }
         var records = [];
 
+        console.log('@@@@ thread: ' + thread);
+        console.log('@@@@ annotation: ' + annotation);
+        console.log('@@@@ text: ' + events.message.text);
+
         let result = processor.match(events.message.text);
                 
                 if (result) {

@@ -25,8 +25,6 @@ rl.on('close', () => {
 
 let match = text => {
     for (var i=0; i<utterances.length; i++) {
-
-        console.log('@@@@ utterance: ' + i + ' ' + utterances[i].utterance);
         var match = text.match(new RegExp(utterances[i].utterance, 'i'));
         if (match) {
             var handler = utterances[i].handler;
