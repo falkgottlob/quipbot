@@ -7,23 +7,23 @@ let moment = require("moment"),
 
  exports.formatObject = selection => {
       
-    let type = selection,
+    let type = selection.toLowerCase(),
         where,
         conditions = [],
         fields,
         limit,
         sort = [];
-console.log("type : '" + type + "'");
 
-    if (type.includes('case')) {
+
+    if (type === 'case') {
         conditions.push({ LastName: { $like : "A%" } });
         fields = 'Id, Subject, description, Status';
         limit = 10;
         sort.push({ CreatedDate: -1, Name : 1 });
-    } else if (type.includes('workorder')) {
+    } else if (type  === 'workorder') {
         fields = 'id, Subject, Status';
         limit =  10;
-    } else if (type.includes('contact')) {
+    } else if (type  === 'contact') {
         conditions.push({ LastName: { $like : "A%" } });
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
