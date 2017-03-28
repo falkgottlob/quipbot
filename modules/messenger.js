@@ -122,8 +122,7 @@ let addSection = (message, thread) => {
 
 let getQuipContent = (quipid, thread) => {
 
-    var html = "",
-        quipid = 'b8n2AhIJdgkK';
+    var html = "Hi Falk";
 
     //console.log("QUIP newsection: " + newsection); 
     //console.log("QUIP sentedit: " + sentedit); 

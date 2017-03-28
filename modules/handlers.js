@@ -23,7 +23,7 @@ exports.objectList = (thread, values) => {
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
-    var html = messenger.getQuipContent('b8n2AhIJdgkK', thread);
+    var html = messenger.getQuipContent('IWZAAAwIVwK', thread);
 
     messenger.addSection(html, thread);
 
