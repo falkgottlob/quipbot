@@ -26,7 +26,9 @@ let moment = require("moment"),
         fields = 'id, Subject, Status';
         limit =  10;
     } else if (obj  === 'contact') {
-        conditions.push({ name: { $like :  "falk%" } });
+        if(values[1]) {
+            conditions.push({ name: { $like :  type[1] + '%' } });
+        }   
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
         sort.push({ CreatedDate: -1, lastname : 1 });
