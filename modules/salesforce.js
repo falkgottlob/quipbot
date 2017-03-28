@@ -73,6 +73,28 @@ let getObject = (type, conditions, fields, limit, sort) => {
 
 };
 
+let searchObject = (type, conditions, fields, limit, sort) => {
+      return new Promise((resolve, reject) => {
+        
+        //if(fields == null) fields = "{}";
+        //if(conditions == null) conditions = "{}";
+        //if(limit == null) limit = 10;
+        //if(sort == null) sort = "{ CreatedDate: -1, Name : 1 }";
+          //.sort(sort)
+conn.search("FIND {Un*} IN ALL FIELDS RETURNING Account(Id, Name), Lead(Id, Name)",(err, resp) => {
+            if (err) {
+                reject("An error as occurred");
+            } else {
+                for (var i = 0, len = resp.length; i < len; i++) {
+                    delete resp[i].attributes;
+                }
+                resolve(resp);
+            }
+
+        });
+    });
+
+};
 
 
 let findProperties = (params) => {
