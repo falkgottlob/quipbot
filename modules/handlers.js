@@ -7,10 +7,21 @@ let salesforce = require('./salesforce'),
 const pug = require('pug');
 const compiledFunction = pug.compileFile('./views/index.pug');
 
+
+
 let templateAdd = (quipid, thread) => { 
     
     messenger.addQuipContent(quipid, thread);
 
+};
+
+exports.objectTemplate = (thread, values) => {
+
+    formatter.formatObject(values).then(records => {
+        templateAdd('IWZAAAwIVwK', thread);
+        messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
+
+    });
 };
 
 exports.objectList = (thread, values) => {
@@ -22,22 +33,13 @@ exports.objectList = (thread, values) => {
 
     //messenger.addSection(values[0], thread);
 
-    
-
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
 
-    templateAdd('IWZAAAwIVwK', thread);
-    
-    //messenger.addQuipContent('IWZAAAwIVwK', thread);
-
-    //messenger.addSection(html, thread);
 
     formatter.formatObject(values).then(records => {
-        messenger.addSection(
-            templateAdd('IWZAAAwIVwK', thread) +
-            compiledFunction({  records: records, rtype: values[0]}), thread);
+        messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
 
     });
 };

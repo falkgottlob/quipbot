@@ -14,8 +14,8 @@ hi hi
 help help
 objectList case
 objectList contact
+objectTemplate account
 objectSearch find contact (.*)
 objectList workorder
 objectList lead
 objectList oppertunity
-objectList account

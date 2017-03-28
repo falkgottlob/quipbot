@@ -109,21 +109,17 @@ let sendMessage = (message, thread, responseto, parts) => {
 
 let addSection = (message, thread) => {
 
-
     var newsection = {
         threadId : thread,
         content : message
     }
-    //console.log("QUIP newsection: " + newsection); 
-    //console.log("QUIP sentedit: " + sentedit); 
+ 
     qclient.editDocument(newsection, sentedit);    
     
 }
 
 let addQuipContent = (quipid, thread) => {
 
-    //console.log("QUIP newsection: " + newsection); 
-    //console.log("QUIP sentedit: " + sentedit); 
     qclient.getThread(quipid, function(err, threads){
         if (err) {  console.error(err); }
         //html = cheerio.load(threads.html);
