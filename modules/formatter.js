@@ -14,9 +14,7 @@ let moment = require("moment"),
         fields,
         limit,
         sort = [];
-console.log("type0 : '" + type[0] + "'");
-console.log("type1: '" + type[1] + "'");
-console.log("type1: '" + type[2] + "'");
+
     obj = type[0].toLowerCase();
 
     if (obj === 'case') {
@@ -28,7 +26,7 @@ console.log("type1: '" + type[2] + "'");
         fields = 'id, Subject, Status';
         limit =  10;
     } else if (obj  === 'contact') {
-        conditions.push({ LastName: { $like : "A%" } });
+        conditions.push({ LastName: { $like : "${type[0]}" } });
         fields = 'id, firstname, lastname, phone, email';
         limit =  10;
         sort.push({ CreatedDate: -1, lastname : 1 });
