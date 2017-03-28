@@ -16,7 +16,7 @@ console.log("Received0 : '" + values[0] + "'");
 console.log("Received1: '" + values[1] + "'");
 console.log("Received1: '" + values[2] + "'");
     messenger.addSection(values[0], thread);
-    formatter.formatObject(values[0]).then(records => {
+    formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
 
     });

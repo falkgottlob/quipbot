@@ -13,7 +13,7 @@ let moment = require("moment"),
         fields,
         limit,
         sort = [];
-
+console.log("type : '" + type + "'");
 
     if (type.includes('case')) {
         conditions.push({ LastName: { $like : "A%" } });
