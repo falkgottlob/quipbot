@@ -131,7 +131,7 @@ let getQuipContent = (quipid, thread) => {
         html = threads.html;
     });
     
-
+    console.log(html);
     return html;   
     
 }
