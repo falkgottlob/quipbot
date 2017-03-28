@@ -35,7 +35,9 @@ exports.objectList = (thread, values) => {
     //messenger.addSection(html, thread);
 
     formatter.formatObject(values).then(records => {
-        messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
+        messenger.addSection(
+            templateAdd('IWZAAAwIVwK', thread) +
+            compiledFunction({  records: records, rtype: values[0]}), thread);
 
     });
 };
