@@ -9,7 +9,7 @@ const compiledFunction = pug.compileFile('./views/index.pug');
 
 
 
-let templatehelper = (quipid, thread) => { 
+let templateHelper = (quipid, thread) => { 
     
     messenger.addQuipContent(quipid, thread);
 
@@ -17,6 +17,7 @@ let templatehelper = (quipid, thread) => {
 
 exports.addTemplate  = (thread, values) => {
 
+    var template;
     if(values[1]){
         var sel = values[1];
         if (sel === '1') {
@@ -29,13 +30,13 @@ exports.addTemplate  = (thread, values) => {
             template = 'IWZAAAwIVwK';
     }
 
-    templatehelper(template, thread);
+    templateHelper(template, thread);
 };   
 
 exports.objectTemplate = (thread, values) => {
 
     console.log("######### Adding Template");
-    templatehelper('IWZAAAwIVwK', thread);
+    templateHelper('IWZAAAwIVwK', thread);
     console.log("######### Adding table");
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
