@@ -122,16 +122,13 @@ let addSection = (message, thread) => {
 
 let getQuipContent = (quipid, thread) => {
 
-
     var html = "",
         quipid = "b8n2AhIJdgkK";
 
     //console.log("QUIP newsection: " + newsection); 
     //console.log("QUIP sentedit: " + sentedit); 
     html = dqclient.getThread(quipid, "");
-    return  = cheerio.load(threads.html);
-
-    qclient.editDocument(quipid, sentedit);    
+    return  cheerio.load(threads.html);   
     
 }
 
