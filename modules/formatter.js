@@ -2,7 +2,8 @@
 
 let moment = require("moment"),
     numeral = require("numeral"),
-    salesforce = require('./messenger');
+    salesforce = require('./salesforce'),
+    messenger = require('./messenger');
 
 
  exports.formatObject = values => {
