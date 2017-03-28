@@ -154,5 +154,5 @@ let startnew = () => {
 }     
 exports.sendMessage = sendMessage;
 exports.addSection = addSection;
-exports.getQuipContent = addSection;
+exports.getQuipContent = getQuipContent;
 
