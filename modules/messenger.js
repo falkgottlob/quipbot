@@ -80,8 +80,7 @@ function parseMessage(message) {
                     let handler = handlers[result.handler];
                     
                     if (handler && typeof handler === "function") {
-                        console.log('@@@@ result.match: ' + result.match);
-                        handler(thread, result.match);
+                        handler(thread, values);
                     } else {
                         console.log("Handler " + result.handlerName + " is not defined");
                     }
