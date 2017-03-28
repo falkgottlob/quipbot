@@ -17,26 +17,24 @@ let templateAdd = (quipid, thread) => {
 
 exports.objectTemplate = (thread, values) => {
 
+    console.log("######### Adding Template");
+    templateAdd('IWZAAAwIVwK', thread);
+    console.log("######### Adding table");
     formatter.formatObject(values).then(records => {
-        templateAdd('IWZAAAwIVwK', thread);
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
-
     });
 };
 
 exports.objectList = (thread, values) => {
 
-
     console.log("Received0 : '" + values[0] + "'");
     console.log("Received1: '" + values[1] + "'");
     console.log("Received1: '" + values[2] + "'");
-
     //messenger.addSection(values[0], thread);
 
     if(values[1]){
         messenger.addSection('OK, looking for ' + values[1], thread);
     }
-
 
     formatter.formatObject(values).then(records => {
         messenger.addSection(compiledFunction({  records: records, rtype: values[0]}), thread);
