@@ -21,7 +21,7 @@ exports.addTemplate  = (thread, values) => {
     if(values[1]){
         var sel = values[1];
         if (sel === '1') {
-            template = 'IWZAAAwIVwK';
+            template = 'tpbaAbRKrpdg';
         } else {
             template = 'IWZAAAwIVwK';
         }
